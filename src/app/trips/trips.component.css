@@ -1,0 +1,15 @@
+.cheapest{
+    border-color:red;
+    border-width: 2px;
+}
+.mostExpensive{
+    border-color:green;
+    border-width: 2px;
+}
+.trips{
+    background-image: url('../../assets/img/tlo.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

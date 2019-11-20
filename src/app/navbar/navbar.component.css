@@ -1,0 +1,11 @@
+h1{
+    font-family: cursive
+
+}
+.tlo{
+    background-image: url('../../assets/img/baner.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

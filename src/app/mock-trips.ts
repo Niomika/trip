@@ -1,4 +1,14 @@
-import { Trip } from './trip';
+export class Trip {
+  id: number;
+  name: string;
+  destination: string;
+  startDate: Date;
+  endDate: Date;
+  price: number;
+  limit: number;
+  description: string;
+  photo: string;
+}
 
 export const TRIPS: Trip[] = [
   { id: 1, name: 'Green Korcula', destination: 'Croatia', startDate: new Date('22/08/2020'), endDate: new Date('31/08/2020'), price: 1500, limit: 5, description: 'Trip to Craotian green island', photo: '/img/korcula.jpg'},

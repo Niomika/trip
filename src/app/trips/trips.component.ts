@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Trip } from '../trip'
+import { Trip } from '../mock-trips'
 import { TRIPS } from '../mock-trips';
 
 @Component({
@@ -35,7 +35,6 @@ export class TripsComponent implements OnInit {
     if (number <= trip.limit) {
       this.shoppingCart[trip.id] = number;
     }
-
   }
 
   removeFromShoppingCart(trip: Trip): void {

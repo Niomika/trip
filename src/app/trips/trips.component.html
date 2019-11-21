@@ -1,30 +1,10 @@
 <app-navbar></app-navbar>
 <section id='trips' class='trips'>
-<h2 class="text-center"  [ngStyle]="{'background-color': offersInShoppingCart() > 9 ? 'green': 'red'}">Number of offerts in your shoping cart: {{offersInShoppingCart()}}</h2>
+    <h2 class="text-center" [ngStyle]="{'background-color': offersInShoppingCart() > 9 ? 'green': 'red'}">Number of
+        offerts in your shoping cart: {{offersInShoppingCart()}}</h2>
     <div class="container">
         <div class="row mb-4">
-            <div *ngFor="let trip of trips" class="col-md-4 mb-3 mb-md-0 mt-4">
-                <div class="card"
-                    [ngClass]="{'cheapest': trip==cheapestTrip, 'mostExpensive': trip==mostExpensiveTrip, 'bg-warning': leftOffers(trip)<=3}">
-                    <div class="card-body text-center">
-                        <h3 class="card-title">{{trip.name | uppercase}}</h3>
-                        <h6  class="text-black-50">{{trip.destination | uppercase}}</h6>
-                        <div class="row">
-                            <div class="col-3 col-md-4"><img class="img-thumbnail img-fluid rounded-circle"
-                                    src="../../assets{{trip.photo}}" /></div>
-                            <div> {{trip.description}}</div>
-                        </div>
-                        <div class="text-black-50"> Price: {{trip.price}}zł</div>
-                        <div class="row justify-content-center align-items-center">
-                            <button (click)="removeFromShoppingCart(trip)" type="button" [disabled]="!shoppingCart[trip.id]" class="col-2 btn btn-outline-primary">-</button>
-                            <button  (click)="addToShoppingCart(trip)" type="button" [disabled]="shoppingCart[trip.id]==trip.limit" class="col-2 btn btn-outline-primary">+</button>
-                            
-                        </div>
-                        <div *ngIf="leftOffers(trip); else noOffersLeftBlock" class="small text-black-50">{{leftOffers(trip)}} places left</div>
-                            <ng-template #noOffersLeftBlock><div class="small text-black-50">No more places!</div></ng-template>
-                    </div>
-                </div>
-            </div>
+            <app-trip *ngFor="let trip of trips" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"></app-trip>
         </div>
     </div>
 </section>

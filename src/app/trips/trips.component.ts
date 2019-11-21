@@ -21,37 +21,39 @@ export class TripsComponent implements OnInit {
   ngOnInit() {
     this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
     this.mostExpensiveTrip = this.trips.reduce((a, b) => a.price > b.price ? a : b);
+    this.trips.forEach(element => {
+      this.shoppingCart[element.id] = 0;
+    });
   }
 
   addToShoppingCart(trip: Trip): void {
     let number = this.shoppingCart[trip.id]
-
     if (number) {
       number += 1;
     }
     else {
       number = 1;
     }
-    if (number <= trip.limit) {
+    if (trip.freePlaces > 0) {
       this.shoppingCart[trip.id] = number;
+      this.trips[this.trips.indexOf(trip)].freePlaces -= 1;
     }
   }
 
   removeFromShoppingCart(trip: Trip): void {
-    let number = this.shoppingCart[trip.id]
+
+    let number = this.shoppingCart[trip.id];
+
     if (number) {
       number -= 1;
     }
     else {
       number = 0;
     }
-    if (number <= trip.limit) {
+    if (trip.freePlaces < trip.limit) {
       this.shoppingCart[trip.id] = number;
+      this.trips[this.trips.indexOf(trip)].freePlaces += 1;
     }
-  }
-
-  leftOffers(trip: Trip): number {
-    return trip.limit - (this.shoppingCart[trip.id] || 0);
   }
 
   offersInShoppingCart(): number {

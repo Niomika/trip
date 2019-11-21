@@ -1,0 +1,8 @@
+.cheapest{
+  border-color:red;
+  border-width: 2px;
+}
+.mostExpensive{
+  border-color:green;
+  border-width: 2px;
+}

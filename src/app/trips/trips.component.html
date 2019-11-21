@@ -1,10 +1,23 @@
 <app-navbar></app-navbar>
-<section id='trips' class='trips'>
-    <h2 class="text-center" [ngStyle]="{'background-color': offersInShoppingCart() > 9 ? 'green': 'red'}">Number of
-        offerts in your shoping cart: {{offersInShoppingCart()}}</h2>
-    <div class="container">
-        <div class="row mb-4">
-            <app-trip *ngFor="let trip of trips" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"></app-trip>
-        </div>
+<section id="trips" class="trips">
+  <h2
+    class="text-center"
+    [ngStyle]="{
+      'background-color': offersInShoppingCart() > 9 ? 'green' : 'red'
+    }"
+  >
+    Number of offerts in your shoping cart: {{ offersInShoppingCart() }}
+  </h2>
+  <div class="container">
+    <div class="row mb-4">
+      <app-trip
+        *ngFor="let trip of trips"
+        class="col-md-4 mb-3 mb-md-0 mt-4"
+        [trip]="trip"
+        [typ]="{'cheapest': trip==cheapestTrip, 'mostExpensive': trip==mostExpensiveTrip}"
+        (addToCart)="addToShoppingCart($event)"
+        (removeFromCart)="removeFromShoppingCart($event)"
+      ></app-trip>
     </div>
+  </div>
 </section>

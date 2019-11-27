@@ -18,6 +18,9 @@ export class TripComponent implements OnInit {
   @Output() removeFromCart: EventEmitter<Trip> = new EventEmitter<
     Trip
   >();
+  @Output() deleteTrip: EventEmitter<Trip> = new EventEmitter<
+  Trip
+>();
 
   constructor() {}
 
@@ -32,6 +35,10 @@ export class TripComponent implements OnInit {
 
   removeFromCartEvent(){
     this.removeFromCart.emit(this.trip);
+  }
+
+  deleteTripEvent(){
+    this.deleteTrip.emit(this.trip);
   }
 
   getTextColor() {

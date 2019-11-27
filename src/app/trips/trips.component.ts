@@ -56,6 +56,16 @@ export class TripsComponent implements OnInit {
     }
   }
 
+  deleteTrip(trip: Trip): void {
+    
+    let number = this.shoppingCart[trip.id];
+console.log("hey");
+    if (number) {
+      this.shoppingCart[trip.id] = 0;
+    }
+    this.trips.splice(trip.id,1);
+  }
+
   offersInShoppingCart(): number {
     return +Object.values(this.shoppingCart).reduce((a, b) => +a + +b, 0);
   }

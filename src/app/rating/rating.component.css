@@ -1,0 +1,34 @@
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    padding:0.25em;
+    cursor:pointer;
+    font-size:300%;
+    line-height:1;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+    content: '♥ ';
+}
+
+.rating > input:checked ~ label {
+    color: red;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: orange;
+}

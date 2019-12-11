@@ -1,0 +1,14 @@
+<div class="container">
+<h4 class='text-center col-8'>New offer</h4>
+<form [formGroup]="newTripForm"  (ngSubmit)="onSubmit()">
+  <input class="form-control" type="text" placeholder="Trip's Name" formControlName="name">
+  <input class="form-control" placeholder="Destination" type="text" formControlName="destination">  
+  <input class="form-control" placeholder="Description" type="text" formControlName="description">
+  <input class="form-control" placeholder="Start date" type="text" formControlName="startDate">
+  <input class="form-control" placeholder="End date" type="text" formControlName="endDate">
+  <input class="form-control" placeholder="Price" type="text" formControlName="price">
+  <input class="form-control" placeholder="Limit" type="text" formControlName="limit">
+  <input class="form-control" placeholder="Image" type="text" formControlName="imageSrc">
+  <button class="btn  btn-outline-primary mysubmit" type="submit" [disabled]="!itemForm.valid">Add this trip</button>
+</form>
+</div>

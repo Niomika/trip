@@ -1,5 +1,6 @@
 <div class="card" [ngClass]="typ">
   <div class="card-body text-center">
+    <app-rating [rating]='trip.rating' (ratingClick)='ratingComponentClick($event)'></app-rating>
     <h3 class="card-title">{{ trip.name | uppercase }}</h3>
     <h6 class="text-black-50">{{ trip.destination | uppercase }}</h6>
     <div class="row">
@@ -29,7 +30,7 @@
     </div>
     <div class="row justify-content-center align-items-center">
     <button 
-    click="deleteTripEvent()"
+    (click)="deleteTripEvent()"
     type="button"
     class="col-4 btn btn-outline-primary">
       Delete

@@ -52,4 +52,8 @@ export class TripComponent implements OnInit {
     }
     return color;
   }
+
+  ratingComponentClick(clickObj: any): void {
+    this.trip.rating = clickObj.rating;
+  }
 }

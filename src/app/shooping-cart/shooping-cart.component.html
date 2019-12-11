@@ -1,0 +1,13 @@
+<section id='shooping-cart' class='items container'>
+    <h2 class="text-center container" [ngStyle]="{
+                  'background-color': offersInShoppingCart() > 9 ? 'green' : 'red'
+                }">
+        Number of offerts in your shoping cart: {{ offersInShoppingCart() }}
+    </h2>
+    <div class="container">
+        <div class="row mb-4">
+            <app-trip *ngFor="let trip of getTripsFromShoppingCart()" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"
+                (removeFromCart)="removeFromShoppingCart($event)"></app-trip>
+        </div>
+    </div>
+</section>

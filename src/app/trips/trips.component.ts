@@ -1,22 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Trip } from '../mock-trips'
 import { TRIPS } from '../mock-trips';
+import { TripsService } from '../trips.service';
 
 @Component({
   selector: 'app-trips',
   templateUrl: './trips.component.html',
-  styleUrls: ['./trips.component.css']
+  styleUrls: ['./trips.component.css'],
+  providers: [TripsService]
 })
 export class TripsComponent implements OnInit {
 
-  trips = TRIPS;
+  trips;
   cheapestTrip: Trip;
   mostExpensiveTrip: Trip;
   shoppingCart = {};
+  minPriceFilter: string;
+  maxPriceFilter: string;
+  destination: string;
 
 
+  constructor(private tripsService: TripsService) {
+    this.trips = this.tripsService.getTrips();
 
-  constructor() { }
+  }
 
   ngOnInit() {
     this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
@@ -57,13 +65,12 @@ export class TripsComponent implements OnInit {
   }
 
   deleteTrip(trip: Trip): void {
-    
+
     let number = this.shoppingCart[trip.id];
-console.log("hey");
     if (number) {
       this.shoppingCart[trip.id] = 0;
     }
-    this.trips.splice(trip.id,1);
+    this.trips.splice(this.trips.indexOf(trip), 1);
   }
 
   offersInShoppingCart(): number {

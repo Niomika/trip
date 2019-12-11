@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Trip } from './mock-trips';
+import { Trip } from '../../app/trip';
 
 @Injectable({
   providedIn: 'root'

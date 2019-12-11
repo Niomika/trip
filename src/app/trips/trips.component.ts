@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Trip } from '../mock-trips'
-import { TRIPS } from '../mock-trips';
-import { TripsService } from '../trips.service';
+import { Trip } from '../../app/trip';
+import { TripsService } from '../services/trips.service';
 
 @Component({
   selector: 'app-trips',
@@ -21,56 +20,32 @@ export class TripsComponent implements OnInit {
   destination: string;
 
 
-  constructor(private tripsService: TripsService) {
-    this.trips = this.tripsService.getTrips();
-
-  }
+  constructor(private tripsService: TripsService) {}
 
   ngOnInit() {
+    this.getTrips();
     this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
     this.mostExpensiveTrip = this.trips.reduce((a, b) => a.price > b.price ? a : b);
-    this.trips.forEach(element => {
-      this.shoppingCart[element.id] = 0;
-    });
+  }
+
+  getTrips(){
+    this.trips = this.tripsService.getTrips();
   }
 
   addToShoppingCart(trip: Trip): void {
-    let number = this.shoppingCart[trip.id]
-    if (number) {
-      number += 1;
-    }
-    else {
-      number = 1;
-    }
-    if (trip.freePlaces > 0) {
-      this.shoppingCart[trip.id] = number;
-      this.trips[this.trips.indexOf(trip)].freePlaces -= 1;
-    }
+    this.tripsService.addToShoppingCart(trip);
+    this.getTrips();
+    console.log(this.trips);
   }
 
   removeFromShoppingCart(trip: Trip): void {
-
-    let number = this.shoppingCart[trip.id];
-
-    if (number) {
-      number -= 1;
-    }
-    else {
-      number = 0;
-    }
-    if (trip.freePlaces < trip.limit) {
-      this.shoppingCart[trip.id] = number;
-      this.trips[this.trips.indexOf(trip)].freePlaces += 1;
-    }
+    this.tripsService.removeFromShoppingCart(trip);
+    this.getTrips();
   }
 
   deleteTrip(trip: Trip): void {
-
-    let number = this.shoppingCart[trip.id];
-    if (number) {
-      this.shoppingCart[trip.id] = 0;
-    }
-    this.trips.splice(this.trips.indexOf(trip), 1);
+    this.tripsService.deleteTrip(trip);
+    this.getTrips();
   }
 
   offersInShoppingCart(): number {

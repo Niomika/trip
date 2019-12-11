@@ -1,6 +1,7 @@
+import { TripsService } from './../services/trips.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Trip } from '../mock-trips';
-import { ShoopingCartService } from '../shooping-cart.service';
+import { Trip } from '../../app/trip';
+import { ShoopingCartService } from '../services/shooping-cart.service';
 
 @Component({
   selector: 'app-shooping-cart',
@@ -8,27 +9,25 @@ import { ShoopingCartService } from '../shooping-cart.service';
   styleUrls: ['./shooping-cart.component.css']
 })
 export class ShoopingCartComponent implements OnInit {
-
-  @Input() trip: Trip;
-  @Output() removeTripEmitter = new EventEmitter<Trip>();
-
-  constructor(private shoppingCartService: ShoopingCartService) {}
+  shoppingCart: Trip[] = [];
+  offersInShoppingCart = 0;
+  constructor(private tripsService: TripsService) {}
 
   ngOnInit() {
+    this.getOffersInShoppingCart();
+    this.getTrips();
   }
 
-  getTripsFromShoppingCart(): Set<Trip> {
-    return new Set(this.shoppingCartService.getTripsFromShoppingCart());
+  getTrips(){
+    this.shoppingCart = this.tripsService.getTrips();
   }
 
-  addToShoppingCart(): void {
-      this.shoppingCartService.addToShoppingCart(this.trip);
-  }
-  removeFromShoppingCart(): void {
-      this.shoppingCartService.removeFromShoppingCart(this.trip);
+  getOffersInShoppingCart(){
+    this.offersInShoppingCart = this.tripsService.getOffersInShoppingCart();
   }
 
-  offersInShoppingCart(): number {
-    return this.shoppingCartService.offersInShoppingCart();
+  removeFromCart(trip: Trip){
+    this.tripsService.removeOneTripFromCart(trip);
+    this.getTrips();
   }
 }

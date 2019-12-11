@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { Trip } from "../mock-trips";
-import { TRIPS } from "../mock-trips";
+import { Trip } from "../../app/trip";
 
 @Component({
   selector: "app-trip",
@@ -10,7 +9,7 @@ import { TRIPS } from "../mock-trips";
 export class TripComponent implements OnInit {
   @Input() trip: Trip;
   @Input() typ: string;
-  photo = "assets";
+  photo = "";
 
   @Output() addToCart: EventEmitter<Trip> = new EventEmitter<
     Trip

@@ -1,19 +1,33 @@
-<div class="card" [ngClass]="typ">
-    <div class="card-body text-center">
-        <h3 class="card-title">{{ trip.name | uppercase }}</h3>
-        <h6 class="text-black-50">{{ trip.destination | uppercase }}</h6>
-        <div class="row">
-            <div class="col-3 col-md-4">
-                <img class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
-            </div>
-            <div>{{ trip.description }}</div>
-        </div>
-        <div class="text-black-50">Price: {{ trip.price }}zł</div>
-        <div class="row justify-content-center align-items-center">
-            <button (click)="removeFromCartEvent()" type="button" [disabled]="trip.freePlaces >= trip.limit"
-                class="col-4 btn btn-outline-primary">
-                Delete
-            </button>
-        </div>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-2 text-center">
+    <img class="img-responsive" [src]="trip.photo" alt="prewiew" width="120" height="80" />
+  </div>
+  <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+    <h4 class="product-name">
+      <strong>{{ trip.name }}</strong>
+    </h4>
+    <h4>
+      <small>{{ trip.destination }}</small>
+    </h4>
+  </div>
+  <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+      <h6>
+        <strong>{{ trip.price * trip.inCart }} <span class="text-muted">zł</span></strong>
+      </h6>
     </div>
+    <div class="col-4 col-sm-4 col-md-4">
+      <div class="quantity">
+        <input disabled="true" type="number" step="1" max="99" min="1" [value]="trip.inCart" title="Qty" class="qty"
+          size="4" />
+      </div>
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 text-right">
+      <button type="button" (click)="deleteFromCart()" class="btn btn-outline-danger">
+        <!-- <fa-icon [icon]="thrashIcon"></fa-icon> -->
+        Delete
+      </button>
+    </div>
+  </div>
 </div>
+<hr/>

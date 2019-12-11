@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Trip } from '../mock-trips'
+import { Trip } from '../../app/trip'
 
 
 @Component({
@@ -14,7 +14,7 @@ export class NewTripComponent {
 
   newTripForm = new FormGroup({
     name: new FormControl(''),
-    destination: new FormControl(''),    
+    destination: new FormControl(''),
     description: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),

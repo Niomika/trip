@@ -1,6 +1,7 @@
+import { ShoopingCartService } from './services/shooping-cart.service';
+import { TripsService } from './services/trips.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TripsComponent } from './trips/trips.component';
@@ -40,7 +41,7 @@ import { FinishDatePipe } from './pipes/finish-date.pipe';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TripsService, ShoopingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

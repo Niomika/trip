@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Trip } from '../mock-trips';
+import { Trip } from '../../app/trip';
 
 @Pipe({
   name: 'destination'

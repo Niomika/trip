@@ -26,6 +26,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import { environment } from '../environments/environment';
     DestinationPipe,
     StartDatePipe,
     FinishDatePipe,
-    DetailedTripComponent
+    DetailedTripComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

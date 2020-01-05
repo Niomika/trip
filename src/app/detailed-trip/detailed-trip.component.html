@@ -3,10 +3,10 @@
   <div class="card-body text-center">
     <i class="fa fa-plane text-primary mb-2"></i>
     <h4 class="text-uppercase m-0">{{ trip.name | uppercase }}</h4>
-    <div class="small text-black-50">{{trip.destination | uppercase}} {{trip.price}}zł</div>
-    <div class="medium text-black-50">Description: {{trip.description}}</div>
-    <div class="medium text-black-50">Trip starts on {{trip.startDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
-    <div class="medium text-black-50">Trip ends on {{trip.endDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
+    <div class="small ">{{trip.destination | uppercase}} {{trip.price}}zł</div>
+    <div class="medium ">Description: {{trip.description}}</div>
+    <div class="medium ">Trip starts on {{trip.startDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
+    <div class="medium ">Trip ends on {{trip.endDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
 
   </div>
 </div>

@@ -10,15 +10,23 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-4">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="router-link-active"> CART </a>
+                    <a class="nav-link" [routerLink]="['/trips']" routerLinkActive="router-link-active"> Our offer </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/newTrip']" routerLinkActive="router-link-active"> ADD NEW TRIP
+                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="router-link-active"> Cart </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/newTrip']" routerLinkActive="router-link-active"> Add trip
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active"> OUR OFFER </a>
+                    <a class="nav-link" [routerLink]="['/signin']" routerLinkActive="router-link-active"> Sign In</a>
+                    <a class="nav-link" (click)="logout()">Sign Out</a>
+                   </li>
+                <li class="nav-item">
+                    <a  class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active"> Sign Up </a>
                 </li>
+
 
             </ul>
         </div>

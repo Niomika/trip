@@ -17,6 +17,15 @@ import { MinPricePipe } from './pipes/min-price.pipe';
 import { DestinationPipe } from './pipes/destination.pipe';
 import { StartDatePipe } from './pipes/start-date.pipe';
 import { FinishDatePipe } from './pipes/finish-date.pipe';
+import { DetailedTripComponent } from './detailed-trip/detailed-trip.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -33,13 +42,20 @@ import { FinishDatePipe } from './pipes/finish-date.pipe';
     MinPricePipe,
     DestinationPipe,
     StartDatePipe,
-    FinishDatePipe
+    FinishDatePipe,
+    DetailedTripComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule
+
   ],
   providers: [TripsService, ShoopingCartService],
   bootstrap: [AppComponent]

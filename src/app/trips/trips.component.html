@@ -1,21 +1,20 @@
-<app-navbar></app-navbar>
 <section id="trips" class="trips">
-  <h2 class="text-center" [ngStyle]="{
-      'background-color': offersInShoppingCart() > 9 ? 'green' : 'red'
-    }">
-    Number of offerts in your shoping cart: {{ offersInShoppingCart() }}
+  <h2 class="text-center">
+    OUR OFFER
   </h2>
   <div class="container">
-    <div id="filters" class="row p-5">
-      <h2 class='text-center col-12' i18n>Filters</h2>
+    <div id="filters" class="row mb-5 justify-content-center">
+      <input [(ngModel)]="destinationFilter" class="col-md-2 form-control" placeholder="Destination" type="text">
       <input [(ngModel)]="minPriceFilter" class="col-md-2 form-control" placeholder="Min price" type="number" min=0>
       <input [(ngModel)]="maxPriceFilter" class="col-md-2 form-control" placeholder="Max price" type="number" max=0>
-      <input [(ngModel)]="destinationFilter" class="col-md-2 form-control" placeholder="Destination" type="number" max=0>      
+      <input [(ngModel)]="startDateFilter" class="col-md-2 form-control" placeholder="Start date" type="date">
+      <input [(ngModel)]="finishDateFilter" class="col-md-2 form-control" placeholder="Finish date" type="date">
     </div>
   </div>
   <div class="container">
     <div class="row mb-4">
-      <app-trip *ngFor="let trip of (trips | minPrice: minPriceFilter | maxPrice: maxPriceFilter | destination: destinationFilter)"
+      <app-trip
+        *ngFor="let trip of (trips | minPrice: minPriceFilter | maxPrice: maxPriceFilter | destination: destinationFilter | startDate: startDateFilter | finishDate: finishDateFilter )"
         class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"
         [typ]="{'cheapest': trip==cheapestTrip, 'mostExpensive': trip==mostExpensiveTrip}"
         (addToCart)="addToShoppingCart($event)" (removeFromCart)="removeFromShoppingCart($event)"

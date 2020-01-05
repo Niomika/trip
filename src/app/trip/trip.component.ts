@@ -18,25 +18,29 @@ export class TripComponent implements OnInit {
     Trip
   >();
   @Output() deleteTrip: EventEmitter<Trip> = new EventEmitter<
-  Trip
->();
+    Trip
+  >();
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.photo += this.trip.photo;
     console.log(this.trip);
   }
 
-  addToCartEvent(){
-    this.addToCart.emit(this.trip);
+  addToCartEvent() {
+    if (this.trip.freePlaces > 0) {
+      this.trip.freePlaces -= 1;
+      this.trip.inCart += 1;      
+      this.addToCart.emit(this.trip);
+    }
   }
 
-  removeFromCartEvent(){
+  removeFromCartEvent() {
     this.removeFromCart.emit(this.trip);
   }
 
-  deleteTripEvent(){
+  deleteTripEvent() {
     this.deleteTrip.emit(this.trip);
   }
 

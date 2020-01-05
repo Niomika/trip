@@ -10,7 +10,7 @@ import { Trip } from '../../app/trip'
 })
 export class NewTripComponent {
 
-  //@Output() addTripEmitter = new EventEmitter<Trip>();
+  @Output() addTrip = new EventEmitter<Trip>();
 
   newTripForm = new FormGroup({
     name: new FormControl(''),
@@ -20,12 +20,15 @@ export class NewTripComponent {
     endDate: new FormControl(''),
     rating: new FormControl(''),
     price: new FormControl(''),
+    freePlaces: new FormControl(''),
     limit: new FormControl(''),
-    imageSrc: new FormControl('')
+    photo: new FormControl(''),
+    inCart: new FormControl('')
   });
 
+
   onSubmit() {
-    //this.addItemEmitter.emit(this.newTripForm.value);
+    this.addTrip.emit(this.newTripForm.value);
     this.newTripForm.reset();
   }
 }

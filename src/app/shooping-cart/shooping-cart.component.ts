@@ -2,6 +2,7 @@ import { TripsService } from './../services/trips.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Trip } from '../../app/trip';
 import { ShoopingCartService } from '../services/shooping-cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-shooping-cart',
@@ -9,7 +10,7 @@ import { ShoopingCartService } from '../services/shooping-cart.service';
   styleUrls: ['./shooping-cart.component.css']
 })
 export class ShoopingCartComponent implements OnInit {
-  shoppingCart: Trip[] = [];
+  shoppingCart: Trip[]=[];
   offersInShoppingCart = 0;
   constructor(private tripsService: TripsService) {}
 
@@ -19,7 +20,8 @@ export class ShoopingCartComponent implements OnInit {
   }
 
   getTrips(){
-    this.shoppingCart = this.tripsService.getTrips();
+    this.tripsService.getTrips().subscribe(shoppingCart => this.shoppingCart = shoppingCart);
+    console.log(this.shoppingCart);
   }
 
   getOffersInShoppingCart(){

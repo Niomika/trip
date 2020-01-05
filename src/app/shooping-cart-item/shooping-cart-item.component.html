@@ -11,7 +11,7 @@
     </h4>
   </div>
   <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+    <div class="col-3 col-sm-3 col-md-5 text-md-right" style="padding-top: 5px">
       <h6>
         <strong>{{ trip.price * trip.inCart }} <span class="text-muted">zł</span></strong>
       </h6>
@@ -22,9 +22,9 @@
           size="4" />
       </div>
     </div>
-    <div class="col-2 col-sm-2 col-md-2 text-right">
-      <button type="button" (click)="deleteFromCart()" class="btn btn-outline-danger">
-        <!-- <fa-icon [icon]="thrashIcon"></fa-icon> -->
+    <div class="col-3 col-sm-3 col-md-3 text-right">
+      <button type="button" (click)="deleteFromCart()" class="row-4 btn btn-outline-primary">
+        
         Delete
       </button>
     </div>

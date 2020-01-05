@@ -2,10 +2,29 @@ h1{
     font-family: cursive
 
 }
-.tlo{
-    background-image: url('../../assets/img/baner.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+
+.navbar {
+    background: #10828C;
+    ;
+}
+
+.nav-link, .navbar-brand {
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: rgb(0, 0, 0);
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-toggler {
+    background: #fff !important;
 }

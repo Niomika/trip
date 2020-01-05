@@ -11,29 +11,35 @@ import { TripsService } from '../services/trips.service';
 })
 export class TripsComponent implements OnInit {
 
-  trips;
+  trips: Trip[];
   cheapestTrip: Trip;
   mostExpensiveTrip: Trip;
   shoppingCart = {};
   minPriceFilter: string;
   maxPriceFilter: string;
   destination: string;
+  startDateFilter: string;
+  finishDateFilter: string;
 
 
   constructor(private tripsService: TripsService) {}
 
   ngOnInit() {
     this.getTrips();
+    //this.specialItems();
+  }
+
+  specialItems(){
     this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
     this.mostExpensiveTrip = this.trips.reduce((a, b) => a.price > b.price ? a : b);
   }
-
-  getTrips(){
-    this.trips = this.tripsService.getTrips();
+  getTrips(){    
+    console.log('pobieram wycieczki');
+    this.tripsService.getTrips().subscribe(trips => this.trips = trips);
   }
 
   addToShoppingCart(trip: Trip): void {
-    this.tripsService.addToShoppingCart(trip);
+    this.tripsService.addToShoppingCart(trip, trip.inCart,trip.freePlaces);
     this.getTrips();
     console.log(this.trips);
   }
@@ -44,12 +50,16 @@ export class TripsComponent implements OnInit {
   }
 
   deleteTrip(trip: Trip): void {
-    this.tripsService.deleteTrip(trip);
+    this.tripsService.deleteTrip(trip).subscribe(res => { this.trips.splice( this.trips.indexOf(trip), 1); });;
     this.getTrips();
   }
 
   offersInShoppingCart(): number {
     return +Object.values(this.shoppingCart).reduce((a, b) => +a + +b, 0);
   }
+
+  addItem(trip: Trip) {
+    this.tripsService.addTrip(trip).subscribe(newItem => this.trips.push(newItem));
+}
 
 }

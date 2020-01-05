@@ -6,7 +6,7 @@
   </h2>
   <div class="container">
     <div class="card">
-      <div *ngFor="let trip of shoppingCart">
+      <div *ngFor="let trip of trips">
         <app-shooping-cart-item *ngIf="trip.inCart > 0" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip" (removeTripEmitter)="removeFromCart($event)">
         </app-shooping-cart-item>
       </div>

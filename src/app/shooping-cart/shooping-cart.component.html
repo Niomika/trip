@@ -1,15 +1,14 @@
-<section id='shooping-cart' class='items container'>
-  <h2 class="text-center container" [ngStyle]="{
+<div id='shooping-cart' class='container'>
+  <h2 class="text-center" [ngStyle]="{
                   'background-color': offersInShoppingCart > 9 ? 'green' : 'red'
                 }">
     Number of offerts in your shoping cart: {{offersInShoppingCart}}
   </h2>
-  <div class="container">
+  <div class="container" *ngIf="isLoaded">
     <div class="card">
-      <div *ngFor="let trip of trips">
-        <app-shooping-cart-item *ngIf="trip.inCart > 0" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip" (removeTripEmitter)="removeFromCart($event)">
-        </app-shooping-cart-item>
+      <div *ngFor="let trip of shoppingCart">
+        <app-shooping-cart-item *ngIf="trip.inCart > 0" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip" (removeTripEmitter)="removeFromCart($event)"></app-shooping-cart-item>
       </div>
     </div>
   </div>
-</section>
+</div>

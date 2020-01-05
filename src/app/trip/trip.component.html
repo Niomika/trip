@@ -1,12 +1,12 @@
 <div class="card" [ngClass]="typ">
   <div class="card-body text-center">
-    
+
   <i routerLink="/trip/{{trip.id}}" class="col-2 fa fa-info-circle text-alert">i</i>
     <app-rating [rating]='trip.rating' (ratingClick)='ratingComponentClick($event)'></app-rating>
     <h3 class="card-title">{{ trip.name | uppercase }}</h3>
     <h6 class="text-black-50">{{ trip.destination | uppercase }}</h6>
     <div class="row">
-        <img class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
+        <img routerLink="/trip/{{trip.id}}" routerLinkActive class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
      </div>
     <div class="text-black-50">Price: {{ trip.price }}zł</div>
     <div class="row justify-content-center align-items-center">
@@ -28,7 +28,7 @@
       </button>
     </div>
     <div class="row justify-content-center align-items-center">
-    <button 
+    <button
     (click)="deleteTripEvent()"
     type="button"
     class="col-4 btn btn-outline-primary">

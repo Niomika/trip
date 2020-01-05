@@ -1,3 +1,4 @@
+import { TripsService } from './../services/trips.service';
 import { Component, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Trip } from '../../app/trip'
@@ -10,7 +11,7 @@ import { Trip } from '../../app/trip'
 })
 export class NewTripComponent {
 
-  @Output() addTrip = new EventEmitter<Trip>();
+  constructor(private tripsService: TripsService){}
 
   newTripForm = new FormGroup({
     name: new FormControl(''),
@@ -28,7 +29,9 @@ export class NewTripComponent {
 
 
   onSubmit() {
-    this.addTrip.emit(this.newTripForm.value);
-    this.newTripForm.reset();
+    this.tripsService.addTrip(this.newTripForm.value).subscribe(res=>{
+      console.log(res);
+      this.newTripForm.reset();
+    });
   }
 }

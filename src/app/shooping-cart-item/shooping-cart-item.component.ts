@@ -12,6 +12,8 @@ export class ShoopingCartItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("XD");
+    console.log(this.trip);
   }
 
   deleteFromCart(){

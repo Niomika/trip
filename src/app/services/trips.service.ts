@@ -31,16 +31,16 @@ export class TripsService {
   }
 
   getTrips(): Observable<Trip[]> {
-    // Firebase      
-    this.Trips = this.TripsCollection.valueChanges({ idField: 'id' });
+    // Firebase
+    const trips = this.TripsCollection.valueChanges({ idField: 'id' });
     console.log('pobranewycieczki w service2');
-    return this.Trips;
+    return trips;
     // API
     return this.http.get<Trip[]>(this.backendUrl)
       .pipe(tap(_ => console.log('gotten Trips from API')),
         catchError(this.handleError<Trip[]>('getTripsFromAPI', [])));
   }
-  
+
   getTrip(id: any): Observable<Trip> {
     // Firebase
     const Trip = this.db.doc<Trip>(`/trips/${id}`).valueChanges();
@@ -78,23 +78,18 @@ export class TripsService {
     this.offersInShoppingCart += 1;
   }
 
-  removeFromShoppingCart(trip: Trip) {
-    /*let index = this.trips.indexOf(trip)
-    if (this.trips[index].freePlaces < this.trips[index].limit) {
-      this.offersInShoppingCart -= 1;
-      this.trips[index].freePlaces += 1;
-      this.trips[index].inCart -= 1;
-    }*/
+  removeFromShoppingCart(Trip: Trip, inCart: number, freePlaces: number){
+    this.db.doc<Trip>(`/trips/${Trip.id}`).update({ inCart: inCart, freePlaces: freePlaces });
+    this.offersInShoppingCart -= 1;
   }
 
   getOffersInShoppingCart(): number {
+    console.log(this.offersInShoppingCart);
     return this.offersInShoppingCart;
   }
 
   removeOneTripFromCart(trip: Trip) {
-    /*let index = this.trips.indexOf(trip);
-    this.trips[index].freePlaces += this.trips[index].inCart;
-    this.trips[index].inCart = 0;*/
+    this.db.doc<Trip>(`/trips/${trip.id}`).update({ inCart: 0, freePlaces: trip.limit });
   }
 
 

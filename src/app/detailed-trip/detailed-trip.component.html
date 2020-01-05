@@ -1,14 +1,12 @@
-<div *ngIf="trip" id='detailed-trip' class="container">
-        <div class="card-body text-center">
-          <i class="fa fa-plane text-primary mb-2"></i>
-          <h4 class="text-uppercase m-0">{{ trip.name | uppercase }}</h4>
-          <div class="small text-black-50">{{trip.destination | uppercase}} {{trip.price}}zł</div>
-          <div class="medium text-black-50">Description: {{trip.description}}</div>
-          <div class="medium text-black-50">Trip starts on {{trip.startDate  | date: 'yyyy-MM-dd'}}</div>
-          <div class="medium text-black-50">Trip ends on {{trip.endDate  | date: 'yyyy-MM-dd'}}</div>
-          <div class="row">
-             <div class="border col-md-4 p-2"><img src="../../assets{{trip.photo}}" /></div>
-        </div>
-        </div>
-      </div>
-      
+<div *ngIf="isLoaded" id='detailed-trip' class="container">
+  <img src="{{trip.photo}}" class="card-img-top">
+  <div class="card-body text-center">
+    <i class="fa fa-plane text-primary mb-2"></i>
+    <h4 class="text-uppercase m-0">{{ trip.name | uppercase }}</h4>
+    <div class="small text-black-50">{{trip.destination | uppercase}} {{trip.price}}zł</div>
+    <div class="medium text-black-50">Description: {{trip.description}}</div>
+    <div class="medium text-black-50">Trip starts on {{trip.startDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
+    <div class="medium text-black-50">Trip ends on {{trip.endDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
+
+  </div>
+</div>

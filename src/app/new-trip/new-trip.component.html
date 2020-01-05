@@ -2,15 +2,15 @@
 <h4 class='text-center col-8' i18n >New offer</h4>
 <form [formGroup]="newTripForm"  (ngSubmit)="onSubmit()">
   <input class="form-control" type="text" placeholder="Trip's Name" formControlName="name">
-  <input class="form-control" placeholder="Destination" type="text" formControlName="destination">  
+  <input class="form-control" placeholder="Destination" type="text" formControlName="destination">
   <input class="form-control" placeholder="Description" type="text" formControlName="description">
-  <input class="form-control" placeholder="Start date" type="text" formControlName="startDate">
-  <input class="form-control" placeholder="End date" type="text" formControlName="endDate">
-  <input class="form-control" placeholder="Price" type="text" formControlName="price">
-  <input class="form-control" placeholder="freePlaces" type="text" formControlName="freePlaces">
-  <input class="form-control" placeholder="Limit" type="text" formControlName="limit">
+  <input class="form-control" placeholder="Start date" type="date" formControlName="startDate">
+  <input class="form-control" placeholder="End date" type="date" formControlName="endDate">
+  <input class="form-control" placeholder="Price" type="number" formControlName="price">
+  <input class="form-control" placeholder="freePlaces" type="number" formControlName="freePlaces">
+  <input class="form-control" placeholder="Limit" type="number" formControlName="limit">
   <input class="form-control" placeholder="Image" type="text" formControlName="photo">
-  <input class="form-control" placeholder="inCart" type="text" formControlName="inCart"> 
+  <input class="form-control" placeholder="inCart" type="number" formControlName="inCart">
   <button class="btn  btn-outline-primary mysubmit" type="submit">Add this trip</button>
 </form>
 </div>

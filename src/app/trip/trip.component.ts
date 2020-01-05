@@ -31,13 +31,17 @@ export class TripComponent implements OnInit {
   addToCartEvent() {
     if (this.trip.freePlaces > 0) {
       this.trip.freePlaces -= 1;
-      this.trip.inCart += 1;      
+      this.trip.inCart += 1;
       this.addToCart.emit(this.trip);
     }
   }
 
   removeFromCartEvent() {
-    this.removeFromCart.emit(this.trip);
+    if (this.trip.freePlaces < this.trip.limit) {
+      this.trip.freePlaces += 1;
+      this.trip.inCart -= 1;
+      this.removeFromCart.emit(this.trip);
+    }
   }
 
   deleteTripEvent() {

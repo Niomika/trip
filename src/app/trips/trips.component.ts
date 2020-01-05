@@ -33,19 +33,19 @@ export class TripsComponent implements OnInit {
     this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
     this.mostExpensiveTrip = this.trips.reduce((a, b) => a.price > b.price ? a : b);
   }
-  getTrips(){    
+  getTrips(){
     console.log('pobieram wycieczki');
     this.tripsService.getTrips().subscribe(trips => this.trips = trips);
   }
 
   addToShoppingCart(trip: Trip): void {
-    this.tripsService.addToShoppingCart(trip, trip.inCart,trip.freePlaces);
+    this.tripsService.addToShoppingCart(trip, trip.inCart, trip.freePlaces);
     this.getTrips();
     console.log(this.trips);
   }
 
   removeFromShoppingCart(trip: Trip): void {
-    this.tripsService.removeFromShoppingCart(trip);
+    this.tripsService.removeFromShoppingCart(trip, trip.inCart, trip.freePlaces);
     this.getTrips();
   }
 

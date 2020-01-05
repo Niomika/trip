@@ -10,8 +10,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./shooping-cart.component.css']
 })
 export class ShoopingCartComponent implements OnInit {
-  shoppingCart: Trip[]=[];
+  shoppingCart: Trip[] = [];
   offersInShoppingCart = 0;
+  isLoaded = false;
   constructor(private tripsService: TripsService) {}
 
   ngOnInit() {
@@ -20,8 +21,11 @@ export class ShoopingCartComponent implements OnInit {
   }
 
   getTrips(){
-    this.tripsService.getTrips().subscribe(shoppingCart => this.shoppingCart = shoppingCart);
-    console.log(this.shoppingCart);
+    this.tripsService.getTrips().subscribe(shoppingCart => {
+      this.shoppingCart = shoppingCart;
+      console.log(this.shoppingCart);
+      this.isLoaded = true;
+    });
   }
 
   getOffersInShoppingCart(){

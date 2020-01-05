@@ -10,22 +10,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailedTripComponent implements OnInit {
   trip: Trip;
-
-  constructor(private tripService: TripsService, private route: ActivatedRoute) {}
+  isLoaded = false;
+  constructor(private tripService: TripsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getTrip();
+    this.route.params.subscribe(params => {
+      this.getTrip(params["id"]);
+    });
+
     const element = document.getElementById('detailed-trip');
     if (element) {
-     const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
-     window.scrollTo({top: y, behavior: 'smooth'});
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
 
-  getTrip(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.tripService.getTrip(id)    
-    .subscribe(trip => this.trip = trip);
+  getTrip(id): void {
+    this.tripService.getTrip(id).subscribe(trip => this.trip = trip);
+    this.isLoaded = true;
   }
 
 

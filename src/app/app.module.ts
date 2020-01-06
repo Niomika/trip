@@ -30,6 +30,7 @@ import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 
@@ -51,7 +52,8 @@ import { HomeComponent } from './home/home.component';
     DetailedTripComponent,
     SignInComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

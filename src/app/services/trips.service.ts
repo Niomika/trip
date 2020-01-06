@@ -12,14 +12,17 @@ export class TripsService {
   offersInShoppingCart = 0;
   shoppingCart = [];
   private TripsCollection: AngularFirestoreCollection<Trip>;
+  private CommentsCollection: AngularFirestoreCollection<Comment>;
   Trips: Observable<Trip[]>;
+  
   private backendUrl = 'api/trips';
-  httpOptions = {
+   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient, private db: AngularFirestore) {
     this.TripsCollection = this.db.collection<Trip>('trips');
+    this.CommentsCollection = this.db.collection<Comment>('comments');
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -96,26 +99,12 @@ export class TripsService {
     this.db.doc<Trip>(`/trips/${trip.id}`).update({ inCart: 0, freePlaces: trip.limit });
   }
 
-
-
-  /*offersInShoppingCart = 0;
-  trips: Trip[] = TRIPS;
-  constructor() { }
-
-  getTrips(): Trip[] {
-    return this.trips;
+  getComments(tripId: string) {
+    return this.db.collection<Comment>('usersComments',  ref => ref.where('trip_id', '==', tripId )).valueChanges();
   }
 
-  getTrip(id: number): Trip {
-    return this.trips.find(x => x.id === id);
+  addComment(comment): Observable<Comment>{
+    this.CommentsCollection.add(comment);
+    return of(comment);
   }
-
-  addTrip(trip: Trip): void {
-    this.trips.push(trip);
-  }
-
-
-
-
-*/
 }

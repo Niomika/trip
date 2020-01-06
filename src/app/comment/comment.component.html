@@ -1,0 +1,15 @@
+<h3 style="text-align:left">Comments:</h3>
+<div>
+    <textarea style="width:100%" [(ngModel)]="text" placeholder="Tell us what you think about this trip."></textarea><br>
+    <div class="row float-right">
+    <textarea [(ngModel)]="name" placeholder="Name"></textarea>
+    <button (click)="addComment()" class="btn btn-outline-primary float-right">Add Comment</button></div>
+</div>
+<div class="text-center" *ngFor="let comment of comments">
+    <div class="card">
+        <h1 class="card-header text-center ">{{ comment.name}}</h1>
+        <div class="card-body text-center">
+            {{comment.text}}
+        </div>
+      </div>
+</div>

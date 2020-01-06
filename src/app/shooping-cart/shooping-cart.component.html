@@ -1,13 +1,15 @@
 <div id='shooping-cart' class='container'>
   <div class="container" *ngIf="isLoaded">
     <div class="card">
+      <h1 class="card-header text-center ">Your shooping cart</h1>
       <div *ngFor="let trip of shoppingCart">
         <app-shooping-cart-item *ngIf="trip.inCart > 0" class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"
           (removeTripEmitter)="removeFromCart($event)"></app-shooping-cart-item>
       </div>
+      <div>
+        <button type="button" class="btn btn-primary float-right" (click)="makeOrder()">Buy trips</button>
+      </div>
     </div>
-    <div>
-      <button type="button" class="btn btn-primary float-right" (click)="makeOrder()">Buy trips</button>
-    </div>
+
   </div>
 </div>

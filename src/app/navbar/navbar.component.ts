@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
@@ -8,10 +9,17 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  isAdmin = false;
 
-  ngOnInit() { }
-  isAdmin(): boolean{
+  constructor(private auth: AuthService, private router: Router) { }
+
+  ngOnInit() {
+    if(this.isUserLoggedIn){
+      this.isAdmin = this.checkIfisAdmin();
+      console.log(this.isAdmin);
+    }
+  }
+  checkIfisAdmin(): boolean{
     return this.auth.isAdmin();
   }
 
@@ -21,6 +29,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    this.router.navigateByUrl("/signin");
   }
 
 }

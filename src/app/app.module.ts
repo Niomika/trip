@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { ShoopingCartService } from './services/shooping-cart.service';
 import { TripsService } from './services/trips.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -48,7 +50,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FinishDatePipe,
     DetailedTripComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientInMemoryWebApiModule
 
   ],
-  providers: [TripsService, ShoopingCartService],
+  providers: [TripsService, ShoopingCartService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

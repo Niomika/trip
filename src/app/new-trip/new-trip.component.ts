@@ -29,7 +29,7 @@ export class NewTripComponent {
 
 
   onSubmit() {
-    this.tripsService.addTrip(this.newTripForm.value).subscribe(res=>{
+    this.tripsService.addTrip(this.newTripForm.value).subscribe(res => {
       console.log(res);
       this.newTripForm.reset();
     });

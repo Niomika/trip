@@ -4,7 +4,7 @@
     <h3 class="card-title">{{ trip.name | uppercase }}</h3>
     <h6 class="text-black-50">{{ trip.destination | uppercase }}</h6>
     <div class="row">
-        <img routerLink="/trip/{{trip.id}}" routerLinkActive class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
+        <img routerLink="/home/trip/{{trip.id}}" routerLinkActive class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
      </div>
     <div class="text-black-50">Price: {{ trip.price }}zł</div>
     <div class="row justify-content-center align-items-center">

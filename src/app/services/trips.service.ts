@@ -83,6 +83,10 @@ export class TripsService {
     this.offersInShoppingCart -= 1;
   }
 
+  updateTrip(trip: Trip) {
+    this.db.doc<Trip>(`/trips/${trip.id}`).update(trip);
+  }
+
   getOffersInShoppingCart(): number {
     console.log(this.offersInShoppingCart);
     return this.offersInShoppingCart;

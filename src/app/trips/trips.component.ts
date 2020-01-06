@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Trip } from '../../app/trip';
@@ -22,7 +23,7 @@ export class TripsComponent implements OnInit {
   finishDateFilter: string;
 
 
-  constructor(private tripsService: TripsService) {}
+  constructor(private tripsService: TripsService, private authService: AuthService) {}
 
   ngOnInit() {
     this.getTrips();

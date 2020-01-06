@@ -16,13 +16,22 @@ export class SignInComponent {
   constructor(
     private router: Router,
     private authService: AuthService
-    ) {}
+  ) { }
 
 
-    
   signIn() {
     this.authService.login(this.credentials)
-      .then(() => this.router.navigate(['/']))
-      .catch(err => alert(err.message) );
+      .then(() => {
+        this.authService.getUsers().subscribe(users => {
+          console.log(users);
+          users.forEach(user => {
+            if (user.email === this.credentials.email) {
+              this.authService.setUser(user);
+            }
+          });
+          this.router.navigate(['/home']);
+        });
+      })
+      .catch(err => alert(err.message));
   }
 }

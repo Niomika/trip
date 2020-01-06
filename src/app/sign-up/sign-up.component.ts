@@ -9,7 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SignUpComponent {
 
- constructor(
+  constructor(
     private authService: AuthService
   ) { }
 
@@ -20,13 +20,16 @@ export class SignUpComponent {
   });
   signUp() {
     //if (this.newUserForm.value.password !== this.newUserForm.value.passwordConfirmation) {
-     // alert('Provided passwords differ');
-     // return;
-   // }
+    // alert('Provided passwords differ');
+    // return;
+    // }
     this.authService.register(this.newUserForm.value.email, this.newUserForm.value.password)
-      .then(() => alert('Account was created'))
+      .then(() => {
+        this.authService.addUserToDatabase(this.newUserForm.value);
+        alert('Account was created');
+      })
       .catch(err => alert(err.message));
-    this.authService.addUserToDatabase(this.newUserForm.value);
+
 
   }
 

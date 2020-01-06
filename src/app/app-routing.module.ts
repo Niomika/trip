@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { TripsComponent } from './trips/trips.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,14 +10,19 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'trips', component: TripsComponent},
-  {path: 'home', component: SignInComponent},
-  {path: 'cart', component: ShoopingCartComponent},
-  {path: 'newTrip', component: NewTripComponent},
-  { path: 'trip/:id', component: DetailedTripComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
-  { path: 'signup', component: SignUpComponent }
+  { path: 'signup', component: SignUpComponent },
+  {
+    //TUTAJ AUTHGUARD BĘDZIE
+    path: 'home', component: HomeComponent, children: [
+      { path: '', redirectTo: 'trips', pathMatch: 'full' },
+      { path: 'cart', component: ShoopingCartComponent },
+      { path: 'newTrip', component: NewTripComponent },
+      { path: 'trip/:id', component: DetailedTripComponent },
+      { path: 'trips', component: TripsComponent },
+    ]
+  },
 ];
 
 @NgModule({

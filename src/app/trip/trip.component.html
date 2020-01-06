@@ -7,7 +7,7 @@
         <img routerLink="/home/trip/{{trip.id}}" routerLinkActive class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
      </div>
     <div class="text-black-50">Price: {{ trip.price }}zł</div>
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center" *ngIf="!isAdmin">
       <button
         (click)="removeFromCartEvent()"
         type="button"
@@ -25,7 +25,7 @@
         +
       </button>
     </div>
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center" *ngIf="isAdmin">
     <button
     (click)="deleteTripEvent()"
     type="button"

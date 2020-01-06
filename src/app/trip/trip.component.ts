@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { Trip } from "../../app/trip";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: "app-trip",
@@ -21,12 +22,25 @@ export class TripComponent implements OnInit {
     Trip
   >();
 
-  constructor() { }
+  isAdmin = false;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.photo += this.trip.photo;
     console.log(this.trip);
+    if(this.isUserLoggedIn){
+      this.isAdmin = this.checkIfisAdmin();
+      console.log(this.isAdmin);
+    }
   }
+
+  checkIfisAdmin(): boolean{
+    return this.auth.isAdmin();
+  }
+  isUserLoggedIn(): boolean {
+    return this.auth.isUserLoggedIn();
+   }
 
   addToCartEvent() {
     if (this.trip.freePlaces > 0) {

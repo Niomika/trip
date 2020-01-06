@@ -1,12 +1,15 @@
-<div *ngIf="isLoaded" id='detailed-trip' class="container">
-  <img src="{{trip.photo}}" class="card-img-top">
+<div class="container">
+<div class="card" [ngClass]="typ" *ngIf="isLoaded" id='detailed-trip'>
+  <h1 class="card-header text-center ">{{ trip.name | uppercase }}</h1>
   <div class="card-body text-center">
-    <i class="fa fa-plane text-primary mb-2"></i>
-    <h4 class="text-uppercase m-0">{{ trip.name | uppercase }}</h4>
-    <div class="small ">{{trip.destination | uppercase}} {{trip.price}}zł</div>
-    <div class="medium ">Description: {{trip.description}}</div>
-    <div class="medium ">Trip starts on {{trip.startDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
-    <div class="medium ">Trip ends on {{trip.endDate.toDate()  | date: 'yyyy-MM-dd'}}</div>
-
+    <h4 class="text-black-50">{{ trip.destination}}</h4>
+    <h4>{{ trip.description }}</h4>
+    <div>Trip starts on: {{trip.startDate  | date: 'yyyy-MM-dd'}}</div>
+    <div>Trip ends on: {{trip.endDate  | date: 'yyyy-MM-dd'}}</div>
+    <div class="text-black-50">Price: {{ trip.price }}zł</div>
+    <div class="row">
+      <img src="{{trip.photo}}" class="card-img-top"/>
+   </div>   
   </div>
+</div>
 </div>

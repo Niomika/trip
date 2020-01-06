@@ -7,6 +7,7 @@ import { NewTripComponent } from './new-trip/new-trip.component';
 import { DetailedTripComponent } from './detailed-trip/detailed-trip.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthGuard } from './auth-guard';
 
 
 const routes: Routes = [
@@ -14,8 +15,7 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   {
-    //TUTAJ AUTHGUARD BĘDZIE
-    path: 'home', component: HomeComponent, children: [
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'trips', pathMatch: 'full' },
       { path: 'cart', component: ShoopingCartComponent },
       { path: 'newTrip', component: NewTripComponent },

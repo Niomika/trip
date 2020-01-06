@@ -19,16 +19,17 @@ export class NewTripComponent {
     description: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
-    rating: new FormControl(''),
+    rating: new FormControl('0'),
     price: new FormControl(''),
     freePlaces: new FormControl(''),
     limit: new FormControl(''),
     photo: new FormControl(''),
-    inCart: new FormControl('')
+    inCart: new FormControl('0')
   });
 
 
   onSubmit() {
+    this.newTripForm.value.freePlaces=this.newTripForm.value.limit;
     this.tripsService.addTrip(this.newTripForm.value).subscribe(res => {
       console.log(res);
       this.newTripForm.reset();

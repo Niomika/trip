@@ -5,3 +5,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.card-header{
+    background-color:#10828C !important;
+}

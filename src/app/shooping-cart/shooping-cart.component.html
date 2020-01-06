@@ -1,9 +1,4 @@
 <div id='shooping-cart' class='container'>
-  <h2 class="text-center" [ngStyle]="{
-                  'background-color': offersInShoppingCart > 9 ? 'green' : 'red'
-                }">
-    Number of offerts in your shoping cart: {{offersInShoppingCart}}
-  </h2>
   <div class="container" *ngIf="isLoaded">
     <div class="card">
       <div *ngFor="let trip of shoppingCart">
@@ -11,8 +6,8 @@
           (removeTripEmitter)="removeFromCart($event)"></app-shooping-cart-item>
       </div>
     </div>
-    <div class="row">
-      <button type="button" class="btn btn-primary" (click)="makeOrder()">Checkout</button>
+    <div>
+      <button type="button" class="btn btn-primary float-right" (click)="makeOrder()">Buy trips</button>
     </div>
   </div>
 </div>

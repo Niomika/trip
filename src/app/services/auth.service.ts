@@ -22,11 +22,10 @@ export class AuthService {
 
   constructor(private fireAuth: AngularFireAuth, private db: AngularFirestore) {
     this.usersCollection = this.db.collection<User>('users');
-    this.usersCollection = this.db.collection<User>('users');
   }
  
-  getUser(): User | null {    
-    return this.user;
+  getUser(): User | null {  
+    return this.fireAuth.auth.currentUser;
   }
  
   login({email, password}: Credentials) {
@@ -36,7 +35,7 @@ export class AuthService {
     });
   }
  
-  register({email, password}: Credentials) {    
+  register(email, password) {    
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password);
   }
  
@@ -48,7 +47,7 @@ export class AuthService {
     return true;
   }
   isUserLoggedIn(): boolean {
-    if (this.user)
+    if (this.fireAuth.auth.currentUser)
     return true;
    }
 

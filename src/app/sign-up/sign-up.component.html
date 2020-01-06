@@ -5,12 +5,12 @@
                 <h3>Sign In</h3>
             </div>
             <div class="card-body">
-                <form>
+                <form [formGroup]="newUserForm" (ngSubmit)="signUp()">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" [(ngModel)]="credentials.email" name="email">
+                        <input class="form-control" placeholder="Email" formControlName="email">
 
                     </div>
                     <div class="input-group form-group">
@@ -18,17 +18,17 @@
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
                         <input type="password" class="form-control" placeholder="Password"
-                            [(ngModel)]="credentials.password" name="Password">
+                            formControlName="password">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
                         <input type="password" class="form-control" placeholder="Repeat Password"
-                            [(ngModel)]="credentials.passwordConfirmation" name="passwordConfirmation">
+                            name="passwordConfirmation">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" (click)="signUp()" class="btn float-right login_btn">
+                        <input type="submit" value="Create" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>

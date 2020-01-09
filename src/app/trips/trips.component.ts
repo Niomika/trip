@@ -16,8 +16,8 @@ export class TripsComponent implements OnInit {
   cheapestTrip: Trip;
   mostExpensiveTrip: Trip;
   shoppingCart = {};
-  minPriceFilter: string;
-  maxPriceFilter: string;
+  minPriceFilter: number;
+  maxPriceFilter: number;
   destination: string;
   startDateFilter: string;
   finishDateFilter: string;

@@ -41,6 +41,7 @@ export class CommentComponent implements OnInit {
         }
       });
       this.comment = '';
+      this.name = '';
     });
   }
 

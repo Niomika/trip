@@ -1,4 +1,4 @@
-<div class="card" [ngStyle]="special == 'true' ?{'background-color':'powderblue'} : {'background-color': 'white'}">
+<div class="card">
   <div class="card-body text-center">
     <app-rating [rating]='trip.rating' (ratingClick)='ratingComponentClick($event)'></app-rating>
     <h3 class="card-title">{{ trip.name | uppercase }}</h3>

@@ -18,7 +18,7 @@ export class TripsComponent implements OnInit {
   shoppingCart = {};
   minPriceFilter: number;
   maxPriceFilter: number;
-  destination: string;
+  destinationFilter: string;
   startDateFilter: string;
   finishDateFilter: string;
 
@@ -27,12 +27,12 @@ export class TripsComponent implements OnInit {
 
   ngOnInit() {
     this.getTrips();
-    //this.specialItems();
   }
 
-  specialItems(){
-    this.cheapestTrip = this.trips.reduce((a, b) => a.price < b.price ? a : b);
-    this.mostExpensiveTrip = this.trips.reduce((a, b) => a.price > b.price ? a : b);
+  isItemSpecial(trip: Trip): boolean{
+    const lowestPriceItem = this.trips.reduce((a, b) => a.price < b.price ? a : b);
+    const highestPriceItem = this.trips.reduce((a, b) => a.price > b.price ? a : b);
+    return (trip === lowestPriceItem || trip === highestPriceItem);
   }
   getTrips(){
     console.log('pobieram wycieczki');

@@ -13,7 +13,7 @@
       <app-trip
         *ngFor="let trip of (trips | minPrice: minPriceFilter | maxPrice: maxPriceFilter | destination: destinationFilter | startDate: startDateFilter | finishDate: finishDateFilter )"
         class="col-md-4 mb-3 mb-md-0 mt-4" [trip]="trip"
-        [typ]="{'cheapest': trip==cheapestTrip, 'mostExpensive': trip==mostExpensiveTrip}"
+        [special]="isItemSpecial(trip)"
         (addToCart)="addToShoppingCart($event)" (removeFromCart)="removeFromShoppingCart($event)"
         (deleteTrip)="deleteTrip($event)"></app-trip>
     </div>

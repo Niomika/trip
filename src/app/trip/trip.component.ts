@@ -8,8 +8,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ["./trip.component.css"]
 })
 export class TripComponent implements OnInit {
-  @Input() trip: Trip;
-  @Input() typ: string;
+  @Input() trip: Trip;  
+  @Input() special: boolean;
   photo = "";
 
   @Output() addToCart: EventEmitter<Trip> = new EventEmitter<

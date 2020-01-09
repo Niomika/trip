@@ -14,7 +14,7 @@ export class TripsService {
   private TripsCollection: AngularFirestoreCollection<Trip>;
   private CommentsCollection: AngularFirestoreCollection<Comment>;
   Trips: Observable<Trip[]>;
-  
+
   private backendUrl = 'api/trips';
    httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -100,10 +100,11 @@ export class TripsService {
   }
 
   getComments(tripId: string) {
-    return this.db.collection<Comment>('usersComments',  ref => ref.where('trip_id', '==', tripId )).valueChanges();
+    return this.db.collection<Comment>('comments',  ref => ref.where('trip_id', '==', tripId )).valueChanges();
   }
 
-  addComment(comment): Observable<Comment>{
+  addComment(comment: Comment): Observable<Comment> {
+    console.log(comment);
     this.CommentsCollection.add(comment);
     return of(comment);
   }

@@ -32,6 +32,10 @@ export class OrdersService {
     return orders;
   }
 
+  getOrdersByUserEmail(email: string): Observable<Order[]> {
+    return this.db.collection<Order>('orders', ref => ref.where('email', '==', email)).valueChanges();
+  }
+
   getOrder(id: any): Observable<Order> {
     const order = this.db.doc<Order>(`/orders/${id}`).valueChanges();
     return order;

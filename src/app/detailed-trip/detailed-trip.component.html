@@ -1,5 +1,5 @@
 <div class="container">
-<div class="card" [ngClass]="typ" *ngIf="isLoaded" id='detailed-trip'>
+<div class="card" *ngIf="isLoaded" id='detailed-trip'>
   <h1 class="card-header text-center ">{{ trip.name | uppercase }}</h1>
   <div class="card-body text-center">
     <h4 class="text-black-50">{{ trip.destination}}</h4>
@@ -9,8 +9,8 @@
     <div class="text-black-50">Price: {{ trip.price }}zł</div>
     <div class="row">
       <img src="{{trip.photo}}" class="card-img-top"/>
-   </div>    
-  <app-comment></app-comment>  
+   </div>
+  <app-comment *ngIf="isLoaded" [trip] ="trip"></app-comment>
   </div>
 </div>
 </div>

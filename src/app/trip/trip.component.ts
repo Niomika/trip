@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { Trip } from "../../app/trip";
 import { AuthService } from '../services/auth.service';
+import { TripsService } from '../services/trips.service';
 
 @Component({
   selector: "app-trip",
@@ -24,7 +25,7 @@ export class TripComponent implements OnInit {
 
   isAdmin = false;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private tripsService: TripsService) { }
 
   ngOnInit() {
     this.photo += this.trip.photo;
@@ -75,6 +76,8 @@ export class TripComponent implements OnInit {
   }
 
   ratingComponentClick(clickObj: any): void {
+     
     this.trip.rating = clickObj.rating;
+    this.tripsService.updateTrip(this.trip);   
   }
 }

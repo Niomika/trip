@@ -36,8 +36,9 @@ export class CommentComponent implements OnInit {
       users.forEach(user => {
         if (user.email === this.auth.getUser().email) {
           this.auth.setUser(user);
-          const comment = { mail: user.email, trip_id: this.trip.id, name: this.name, text: this.comment } as unknown as Comment;
+          const comment = { mail: user.email, trip_id: this.trip.id, name: this.name, text: this.comment, rating: this.trip.rating} as unknown as Comment;
           this.tripsService.addComment(comment);
+    this.tripsService.updateTrip(this.trip);
         }
       });
       this.comment = '';
@@ -45,6 +46,9 @@ export class CommentComponent implements OnInit {
     });
   }
 
+  ratingComponentClick(clickObj: any): void {     
+    this.trip.rating = clickObj.rating;   
+  }
   checkIfCanComment() {
     this.orderService.getOrdersByUserEmail(this.auth.getUser().email).subscribe(orders => {
       console.log(orders);

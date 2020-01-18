@@ -1,17 +1,17 @@
-<h3 style="text-align:left">Share your opinion:</h3>
 <div *ngIf="isLoaded && canComment">
-    <textarea style="width:100%" [(ngModel)]="comment"
+    <h3 style="text-align:left">Share your opinion:</h3>
+    <app-rating [rating]='trip.rating' [trip]='trip' (ratingClick)='ratingComponentClick($event)'></app-rating>
+        <textarea style="width:100%" [(ngModel)]="comment"
         placeholder="Tell us what you think about this trip."></textarea><br>
     <div class="row float-right">
         <textarea [(ngModel)]="name" placeholder="Name"></textarea>
-        <button (click)="addComment()" class="btn btn-info pull-right">Add Comment</button></div>
-</div><br><br><br>     
+        <button (click)="addComment()" class="btn btn-info pull-right">Add Comment</button></div><br><br><br>   
+</div>  
 <div class="row bootstrap snippets container">
     <div class="container">
         <div class="comment-wrapper">
             <div class="panel panel-info">
-                 <div class="panel-body">
-                                
+                 <div class="panel-body">                                
                             <h3>Comments of other customers</h3>
                     <div class="clearfix"></div>
                     <hr>
@@ -22,9 +22,9 @@
                             </a>
                             <div>
                                 <strong>{{comment.name}}</strong> <span class="text-muted"> commented:</span>
-                                <p>
-                                    {{comment.text}}
-                                </p>
+                                <div>
+                                    {{ comment.text}}
+                                </div>
                             </div>
                         </li>                   
                     </ul>

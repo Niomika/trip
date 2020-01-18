@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: "AIzaSyD0FcbifsKmn8163cIzaTpTPSgL_Y8HBx8",
     authDomain: "webtrip.firebaseapp.com",

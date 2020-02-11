@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="trip">
   <div class="card-body text-center">
     <app-rating [rating]='trip.rating' [trip]='trip' (ratingClick)='ratingComponentClick($event)'></app-rating>
     <h3 class="card-title">{{ trip.name | uppercase }}</h3>
@@ -10,7 +10,7 @@
     <div class="row justify-content-center align-items-center" *ngIf="!isAdmin">
       <button
         (click)="removeFromCartEvent()"
-        type="button"
+        type="button" name="-"
         [disabled]="trip.freePlaces >= trip.limit"
         class="col-2 btn btn-outline-primary"
       >
@@ -18,7 +18,7 @@
       </button>
       <button
         (click)="addToCartEvent()"
-        type="button"
+        type="button" name="+"
         [disabled]="trip.freePlaces <= 0"
         class="col-2 btn btn-outline-primary"
       >
@@ -28,7 +28,7 @@
     <div class="row justify-content-center align-items-center" *ngIf="isAdmin">
     <button
     (click)="deleteTripEvent()"
-    type="button"
+    type="button" name="delete"
     class="col-4 btn btn-outline-primary">
       Delete
     </button>

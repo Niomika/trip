@@ -1,5 +1,5 @@
 import { HomeComponent } from './home/home.component';
-import { TripsComponent } from './trips/trips.component';
+import { ChartsComponent } from './charts/charts.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'cart', component: ShoopingCartComponent },
       { path: 'addnewdata', component: AddNewDataComponent },
       { path: 'trip/:id', component: DetailedTripComponent },
-      { path: 'trips', component: TripsComponent },
+      { path: 'trips', component: ChartsComponent },
     ]
   },
 ];

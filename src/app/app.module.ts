@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TripsComponent } from './trips/trips.component';
+import { ChartsComponent } from './charts/charts.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TripComponent } from './trip/trip.component';
 import { RatingComponent } from './rating/rating.component';
@@ -27,13 +27,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { CommentComponent } from './comment/comment.component';
 import { ChartModule } from 'primeng/chart';
+import {TabViewModule} from 'primeng/tabview';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TripsComponent,
+    ChartsComponent,
     NavbarComponent,
     TripComponent,
     RatingComponent,
@@ -56,7 +57,8 @@ import { ChartModule } from 'primeng/chart';
     AngularFireAuthModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule,
-    ChartModule
+    ChartModule,
+    TabViewModule
 
   ],
   providers: [TripsService, ShoopingCartService, AuthService],

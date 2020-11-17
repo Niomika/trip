@@ -44,15 +44,14 @@ export class TripsService {
   }
   
 
-  getTrips(): Observable<TestsAndBugsData[]> {
+  getData(): Observable<TestsAndBugsData[]> {
     // Firebase
-    const trips = this.TestAndBugsDataCollection.valueChanges({ idField: 'id' });
-    console.log('pobranewycieczki w service2');
-    return trips;
+    const testAndBugsData = this.TestAndBugsDataCollection.valueChanges({ idField: 'id' });
+    return testAndBugsData;
     // API
     return this.http.get<TestsAndBugsData[]>(this.backendUrl)
-      .pipe(tap(_ => console.log('gotten Trips from API')),
-        catchError(this.handleError<TestsAndBugsData[]>('getTripsFromAPI', [])));
+      .pipe(tap(_ => console.log('gotten Data from API')),
+        catchError(this.handleError<TestsAndBugsData[]>('getDataFromAPI', [])));
   }
 
   getTrip(id: any): Observable<TestsAndBugsData> {

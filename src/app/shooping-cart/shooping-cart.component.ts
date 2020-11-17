@@ -24,10 +24,7 @@ export class ShoopingCartComponent implements OnInit {
   }
 
   getTrips() {
-    this.tripsService.getTrips().subscribe(shoppingCart => {
-      this.shoppingCart = shoppingCart;
-      this.isLoaded = true;
-    });
+    
   }
 
   getOffersInShoppingCart() {

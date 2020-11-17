@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
-      { path: '', redirectTo: 'trips', pathMatch: 'full' },
+      { path: '', redirectTo: 'charts', pathMatch: 'full' },
       { path: 'cart', component: ShoopingCartComponent },
       { path: 'addnewdata', component: AddNewDataComponent },
       { path: 'trip/:id', component: DetailedTripComponent },
-      { path: 'trips', component: ChartsComponent },
+      { path: 'charts', component: ChartsComponent },
     ]
   },
 ];

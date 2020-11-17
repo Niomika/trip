@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ChartsComponent } from './charts/charts.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TripComponent } from './trip/trip.component';
-import { RatingComponent } from './rating/rating.component';
 import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
@@ -28,6 +27,9 @@ import { HomeComponent } from './home/home.component';
 import { CommentComponent } from './comment/comment.component';
 import { ChartModule } from 'primeng/chart';
 import {TabViewModule} from 'primeng/tabview';
+import { TestsChartComponent } from './tests-chart/tests-chart.component';
+import { BugsChartComponent } from './bugs-chart/bugs-chart.component';
+import { NewAndFixedChartComponent } from './new-and-fixed-chart/new-and-fixed-chart.component';
 
 
 
@@ -37,7 +39,6 @@ import {TabViewModule} from 'primeng/tabview';
     ChartsComponent,
     NavbarComponent,
     TripComponent,
-    RatingComponent,
     AddNewDataComponent,
     ShoopingCartComponent,
     ShoopingCartItemComponent,
@@ -45,7 +46,10 @@ import {TabViewModule} from 'primeng/tabview';
     SignInComponent,
     SignUpComponent,
     HomeComponent,
-    CommentComponent
+    CommentComponent,
+    TestsChartComponent,
+    BugsChartComponent,
+    NewAndFixedChartComponent
   ],
   imports: [
     BrowserModule,

@@ -2,8 +2,7 @@
     <h3 style="text-align:left">Share your opinion:</h3>
     <textarea style="width:100%" [(ngModel)]="comment" name="comment"
         placeholder="Tell us what you think about this trip."></textarea><br>
-        <app-rating [rating]='trip.rating' [trip]='trip' (ratingClick)='ratingComponentClick($event)'></app-rating>
-    
+        
     <div class="row float-right">
         <textarea [(ngModel)]="name" name="nick" placeholder="Name"></textarea>
         <button (click)="addComment()" name ="add" class="btn btn-info pull-right">Add Comment</button></div><br><br><br>   

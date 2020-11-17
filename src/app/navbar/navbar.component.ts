@@ -9,33 +9,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  isAdmin = false;
   isLoaded = false;
 
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (this.isUserLoggedIn) {
-      this.checkIfisAdmin();
-    }
-  }
-  checkIfisAdmin() {
-    this.auth.getUsers().subscribe(users => {
-      users.forEach(user => {
-        if (user.email === this.auth.getUser().email) {
-          this.auth.setUser(user);
-          if (user.role === "admin") {
-            this.isAdmin = true;
-          }
-          this.isLoaded = true;
-        }
-      });
-    });
-  }
 
-  isUserLoggedIn(): boolean {
-    return this.auth.isUserLoggedIn();
-  }
+        }
 
   logout() {
     this.auth.logout();

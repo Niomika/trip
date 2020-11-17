@@ -46,15 +46,7 @@ export class AuthService {
   logout() {
     return this.fireAuth.auth.signOut();
   }
-
-  isAdmin(): boolean {
-    console.log(this.user);
-    if (this.user && this.user.role === "admin") {
-      return true;
-    }
-    return false;
-
-  }
+  
   isUserLoggedIn(): boolean {
     if (this.fireAuth.auth.currentUser) {
       return true;

@@ -16,13 +16,8 @@ export class SignUpComponent {
   newUserForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
-    role: new FormControl('user')
   });
   signUp() {
-    //if (this.newUserForm.value.password !== this.newUserForm.value.passwordConfirmation) {
-    // alert('Provided passwords differ');
-    // return;
-    // }
     this.authService.register(this.newUserForm.value.email, this.newUserForm.value.password)
       .then(() => {
         this.authService.addUserToDatabase(this.newUserForm.value);

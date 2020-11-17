@@ -23,22 +23,11 @@ export class TripComponent implements OnInit {
     TestsAndBugsData
   >();
 
-  isAdmin = false;
-
   constructor(private auth: AuthService, private tripsService: TripsService) { }
 
   ngOnInit() {
-    
-    console.log(this.trip);
-    if(this.isUserLoggedIn){
-      this.isAdmin = this.checkIfisAdmin();
-      console.log(this.isAdmin);
-    }
   }
 
-  checkIfisAdmin(): boolean{
-    return this.auth.isAdmin();
-  }
   isUserLoggedIn(): boolean {
     return this.auth.isUserLoggedIn();
    }

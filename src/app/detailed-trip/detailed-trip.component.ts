@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../services/trips.service';
-import { Trip } from '../trip';
+import { TestsAndBugsData } from '../TestsAndBugsData';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detailed-trip.component.css']
 })
 export class DetailedTripComponent implements OnInit {
-  trip: Trip;
+  trip: TestsAndBugsData;
   isLoaded = false;
   constructor(private tripService: TripsService, private route: ActivatedRoute) { }
 

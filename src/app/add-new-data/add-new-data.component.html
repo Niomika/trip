@@ -1,0 +1,24 @@
+<div class="container">
+<div class="card">
+  <h1 class="card-header text-center ">Add new data</h1>
+  <div class="card-body text-center">
+    <form [formGroup]="newDataForm" (ngSubmit)="onSubmit()">      
+      <input class="form-control" id="date" placeholder="Date" type="date" formControlName="date">
+      <input class="form-control" placeholder="Number Of Manual Tests" type="number" formControlName="manualTests">      
+      <input class="form-control" placeholder="SuccesManualTests" type="number" formControlName="succesManualTests">
+      <input class="form-control" placeholder="AutomaticTests" type="number" formControlName="automaticTests">      
+      <input class="form-control" placeholder="SuccesAutomaticTests" type="number" formControlName="succesAutomaticTests">
+      <input class="form-control" placeholder="BugsFromTeam" type="number" formControlName="bugsFromTeam">
+      <input class="form-control" placeholder="BugsFromClients" type="number" formControlName="bugsFromClients">
+      <input class="form-control" placeholder="CriticalBugs" type="number" formControlName="criticalBugs">
+      <input class="form-control" placeholder="RegressionBugs" type="number" formControlName="regressionBugs">
+      <input class="form-control" placeholder="LegacyBugs" type="number" formControlName="legacyBugs">
+      <input class="form-control" placeholder="NewBugsFromTeam" type="number" formControlName="newBugsFromTeam">
+      <input class="form-control" placeholder="NewBugsFromClients" type="number" formControlName="newBugsFromClients">
+      <input class="form-control" placeholder="NewFixedBugsFromTeam" type="number" formControlName="newFixedBugsFromTeam">
+      <input class="form-control" placeholder="NewFixedBugsFromClients" type="number" formControlName="newFixedBugsFromClients">
+      <button class="btn  btn-outline-primary mysubmit" type="submit">Add this data</button>
+    </form>
+  </div>
+</div>
+</div>

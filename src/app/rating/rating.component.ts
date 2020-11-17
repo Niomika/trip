@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { Trip } from '../trip';
+import { TestsAndBugsData } from '../TestsAndBugsData';
 import { AuthService } from '../services/auth.service';
 import { TripsService } from '../services/trips.service';
 import { OrdersService } from '../services/orders.service';
@@ -12,7 +12,7 @@ import { OrdersService } from '../services/orders.service';
 export class RatingComponent implements OnInit {
 
   @Input() rating: number;
-  @Input() trip: Trip;
+  @Input() trip: TestsAndBugsData;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
   canRate = false;
@@ -20,7 +20,6 @@ export class RatingComponent implements OnInit {
   constructor(private auth: AuthService, private tripsService: TripsService, private orderService: OrdersService) { }
 
   ngOnInit() {
-    this.rating=this.trip.rating;
     this.checkIfCanRate();
   }
 

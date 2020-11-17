@@ -9,15 +9,10 @@ import { TripsComponent } from './trips/trips.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TripComponent } from './trip/trip.component';
 import { RatingComponent } from './rating/rating.component';
-import { NewTripComponent } from './new-trip/new-trip.component';
+import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
 import { ShoopingCartItemComponent } from './shooping-cart-item/shooping-cart-item.component';
-import { MaxPricePipe } from './pipes/max-price.pipe';
-import { MinPricePipe } from './pipes/min-price.pipe';
-import { DestinationPipe } from './pipes/destination.pipe';
-import { StartDatePipe } from './pipes/start-date.pipe';
-import { FinishDatePipe } from './pipes/finish-date.pipe';
 import { DetailedTripComponent } from './detailed-trip/detailed-trip.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -31,6 +26,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { CommentComponent } from './comment/comment.component';
+import { ChartModule } from 'primeng/chart';
 
 
 
@@ -41,14 +37,9 @@ import { CommentComponent } from './comment/comment.component';
     NavbarComponent,
     TripComponent,
     RatingComponent,
-    NewTripComponent,
+    AddNewDataComponent,
     ShoopingCartComponent,
     ShoopingCartItemComponent,
-    MaxPricePipe,
-    MinPricePipe,
-    DestinationPipe,
-    StartDatePipe,
-    FinishDatePipe,
     DetailedTripComponent,
     SignInComponent,
     SignUpComponent,
@@ -64,7 +55,8 @@ import { CommentComponent } from './comment/comment.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule
+    HttpClientInMemoryWebApiModule,
+    ChartModule
 
   ],
   providers: [TripsService, ShoopingCartService, AuthService],

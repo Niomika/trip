@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { Trip } from "../../app/trip";
+import { TestsAndBugsData } from "../TestsAndBugsData";
 import { AuthService } from '../services/auth.service';
 import { TripsService } from '../services/trips.service';
 
@@ -9,18 +9,18 @@ import { TripsService } from '../services/trips.service';
   styleUrls: ["./trip.component.css"]
 })
 export class TripComponent implements OnInit {
-  @Input() trip: Trip;  
+  @Input() trip: TestsAndBugsData;  
   @Input() special: boolean;
   photo = "";
 
-  @Output() addToCart: EventEmitter<Trip> = new EventEmitter<
-    Trip
+  @Output() addToCart: EventEmitter<TestsAndBugsData> = new EventEmitter<
+    TestsAndBugsData
   >();
-  @Output() removeFromCart: EventEmitter<Trip> = new EventEmitter<
-    Trip
+  @Output() removeFromCart: EventEmitter<TestsAndBugsData> = new EventEmitter<
+    TestsAndBugsData
   >();
-  @Output() deleteTrip: EventEmitter<Trip> = new EventEmitter<
-    Trip
+  @Output() deleteTrip: EventEmitter<TestsAndBugsData> = new EventEmitter<
+    TestsAndBugsData
   >();
 
   isAdmin = false;
@@ -28,7 +28,7 @@ export class TripComponent implements OnInit {
   constructor(private auth: AuthService, private tripsService: TripsService) { }
 
   ngOnInit() {
-    this.photo += this.trip.photo;
+    
     console.log(this.trip);
     if(this.isUserLoggedIn){
       this.isAdmin = this.checkIfisAdmin();
@@ -44,19 +44,11 @@ export class TripComponent implements OnInit {
    }
 
   addToCartEvent() {
-    if (this.trip.freePlaces > 0) {
-      this.trip.freePlaces -= 1;
-      this.trip.inCart += 1;
-      this.addToCart.emit(this.trip);
-    }
+    
   }
 
   removeFromCartEvent() {
-    if (this.trip.freePlaces < this.trip.limit) {
-      this.trip.freePlaces += 1;
-      this.trip.inCart -= 1;
-      this.removeFromCart.emit(this.trip);
-    }
+
   }
 
   deleteTripEvent() {
@@ -64,20 +56,10 @@ export class TripComponent implements OnInit {
   }
 
   getTextColor() {
-    const freePlaces = this.trip.freePlaces;
-    var color = "black";
-    if (freePlaces <= 3) {
-      return "red";
-    }
-    if (freePlaces <= 6) {
-      return "orange";
-    }
-    return color;
+    
   }
 
   ratingComponentClick(clickObj: any): void {
-     
-    this.trip.rating = clickObj.rating;
-    this.tripsService.updateTrip(this.trip);   
+         this.tripsService.updateTrip(this.trip);   
   }
 }

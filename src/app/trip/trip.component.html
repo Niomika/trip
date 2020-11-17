@@ -1,42 +1,5 @@
 <div class="card" id="trip">
   <div class="card-body text-center">
-    <app-rating [rating]='trip.rating' [trip]='trip' (ratingClick)='ratingComponentClick($event)'></app-rating>
-    <h3 class="card-title">{{ trip.name | uppercase }}</h3>
-    <h6 class="text-black-50">{{ trip.destination | uppercase }}</h6>
-    <div class="row">
-        <img routerLink="/home/trip/{{trip.id}}" routerLinkActive class="img-thumbnail img-fluid rounded-circle" [src]="photo" />
-     </div>
-    <div class="text-black-50">Price: {{ trip.price }}zł</div>
-    <div class="row justify-content-center align-items-center" *ngIf="!isAdmin">
-      <button
-        (click)="removeFromCartEvent()"
-        type="button" name="-"
-        [disabled]="trip.freePlaces >= trip.limit"
-        class="col-2 btn btn-outline-primary"
-      >
-        -
-      </button>
-      <button
-        (click)="addToCartEvent()"
-        type="button" name="+"
-        [disabled]="trip.freePlaces <= 0"
-        class="col-2 btn btn-outline-primary"
-      >
-        +
-      </button>
-    </div>
-    <div class="row justify-content-center align-items-center" *ngIf="isAdmin">
-    <button
-    (click)="deleteTripEvent()"
-    type="button" name="delete"
-    class="col-4 btn btn-outline-primary">
-      Delete
-    </button>
-  </div>
-    <div class="small" [ngStyle]="{
-      color: getTextColor()
-    }">
-      {{ trip.freePlaces }} places left
-    </div>
+   
   </div>
 </div>

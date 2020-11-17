@@ -3,7 +3,7 @@ import { TripsComponent } from './trips/trips.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
-import { NewTripComponent } from './new-trip/new-trip.component';
+import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { DetailedTripComponent } from './detailed-trip/detailed-trip.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'trips', pathMatch: 'full' },
       { path: 'cart', component: ShoopingCartComponent },
-      { path: 'newTrip', component: NewTripComponent },
+      { path: 'addnewdata', component: AddNewDataComponent },
       { path: 'trip/:id', component: DetailedTripComponent },
       { path: 'trips', component: TripsComponent },
     ]

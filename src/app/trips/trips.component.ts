@@ -1,7 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Trip } from '../../app/trip';
+import { TestsAndBugsData } from '../TestsAndBugsData';
 import { TripsService } from '../services/trips.service';
 
 @Component({
@@ -12,55 +12,27 @@ import { TripsService } from '../services/trips.service';
 })
 export class TripsComponent implements OnInit {
 
-  trips: Trip[];
-  cheapestTrip: Trip;
-  mostExpensiveTrip: Trip;
-  shoppingCart = {};
-  minPriceFilter: number;
-  maxPriceFilter: number;
-  destinationFilter: string;
-  startDateFilter: string;
-  finishDateFilter: string;
-
-
-  constructor(private tripsService: TripsService, private authService: AuthService) {}
-
-  ngOnInit() {
-    this.getTrips();
+  dataSource: any;
+  constructor() {
+    this.dataSource = {
+      labels: ["2015", "2016", "2017", "2018", "2019", "2020"],
+      datasets: [
+        {
+          label: "Company1",
+          backgroundColor: "blue",
+          data: [25, 30, 60, 50, 80, 90]
+        },
+        {
+          label: "Company2",
+          backgroundColor: "green",
+          data: [45, 33, 70, 72, 95]
+        }
+      ]
+    };
   }
 
-  isItemSpecial(trip: Trip): boolean{
-    const lowestPriceItem = this.trips.reduce((a, b) => a.price < b.price ? a : b);
-    const highestPriceItem = this.trips.reduce((a, b) => a.price > b.price ? a : b);
-    return (trip === lowestPriceItem || trip === highestPriceItem);
-  }
-  getTrips(){
-    console.log('pobieram wycieczki');
-    this.tripsService.getTrips().subscribe(trips => this.trips = trips);
-  }
+  ngOnInit() {}
 
-  addToShoppingCart(trip: Trip): void {
-    this.tripsService.addToShoppingCart(trip, trip.inCart, trip.freePlaces);
-    this.getTrips();
-    console.log(this.trips);
-  }
-
-  removeFromShoppingCart(trip: Trip): void {
-    this.tripsService.removeFromShoppingCart(trip, trip.inCart, trip.freePlaces);
-    this.getTrips();
-  }
-
-  deleteTrip(trip: Trip): void {
-    this.tripsService.deleteTrip(trip).subscribe(res => { this.trips.splice( this.trips.indexOf(trip), 1); });;
-    this.getTrips();
-  }
-
-  offersInShoppingCart(): number {
-    return +Object.values(this.shoppingCart).reduce((a, b) => +a + +b, 0);
-  }
-
-  addItem(trip: Trip) {
-    this.tripsService.addTrip(trip).subscribe(newItem => this.trips.push(newItem));
-}
+ // addItem(trip: TestsAndBugsData) {    this.tripsService.addNewTestsAndBugsData(trip).subscribe(newItem => this.trips.push(newItem));
 
 }

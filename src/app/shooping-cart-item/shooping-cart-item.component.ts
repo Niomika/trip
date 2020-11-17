@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Trip } from '../../app/trip';
+import { TestsAndBugsData } from '../TestsAndBugsData';
 
 @Component({
   selector: 'app-shooping-cart-item',
@@ -7,8 +7,8 @@ import { Trip } from '../../app/trip';
   styleUrls: ['./shooping-cart-item.component.css']
 })
 export class ShoopingCartItemComponent implements OnInit {
-  @Input() trip: Trip;
-  @Output() removeTripEmitter = new EventEmitter<Trip>();
+  @Input() trip: TestsAndBugsData;
+  @Output() removeTripEmitter = new EventEmitter<TestsAndBugsData>();
   constructor() { }
 
   ngOnInit() {

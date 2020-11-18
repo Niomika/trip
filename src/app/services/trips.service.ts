@@ -9,8 +9,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   providedIn: 'root'
 })
 export class TripsService {
-  offersInShoppingCart = 0;
-  shoppingCart = [];
   private TestAndBugsDataCollection: AngularFirestoreCollection<TestsAndBugsData>;
   private CommentsCollection: AngularFirestoreCollection<Comment>;
   Trips: Observable<TestsAndBugsData[]>;
@@ -21,7 +19,7 @@ export class TripsService {
   };
 
   constructor(private http: HttpClient, private db: AngularFirestore) {
-    this.TestAndBugsDataCollection = this.db.collection<TestsAndBugsData>('testsAndBugsData');
+    this.TestAndBugsDataCollection = this.db.collection<TestsAndBugsData>('test');
     this.CommentsCollection = this.db.collection<Comment>('comments');
   }
 
@@ -42,7 +40,7 @@ export class TripsService {
       .pipe(tap(_ => console.log('added new data')),
         catchError(this.handleError<TestsAndBugsData>('addNewTestsAndBugsData')));
   }
-  
+
 
   getData(): Observable<TestsAndBugsData[]> {
     // Firebase
@@ -75,26 +73,6 @@ export class TripsService {
     return this.http.delete<TestsAndBugsData>(url, this.httpOptions)
       .pipe(tap(_ => console.log('removed Trip')),
         catchError(this.handleError<TestsAndBugsData>('removeTrip')));
-  }
-
-  addToShoppingCart(Trip: TestsAndBugsData, inCart: number, freePlaces: number) {
-    this.offersInShoppingCart += 1;
-  }
-
-  removeFromShoppingCart(Trip: TestsAndBugsData, inCart: number, freePlaces: number){
-    this.offersInShoppingCart -= 1;
-  }
-
-  updateTrip(trip: TestsAndBugsData) {
-    this.db.doc<TestsAndBugsData>(`/trips/${trip.id}`).update(trip);
-  }
-
-  getOffersInShoppingCart(): number {
-    console.log(this.offersInShoppingCart);
-    return this.offersInShoppingCart;
-  }
-
-  removeOneTripFromCart(trip: TestsAndBugsData) {
   }
 
   getComments(tripId: string) {

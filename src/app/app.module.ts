@@ -1,5 +1,4 @@
 import { AuthService } from './services/auth.service';
-import { ShoopingCartService } from './services/shooping-cart.service';
 import { TripsService } from './services/trips.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -7,12 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartsComponent } from './charts/charts.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TripComponent } from './trip/trip.component';
 import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
-import { ShoopingCartItemComponent } from './shooping-cart-item/shooping-cart-item.component';
-import { DetailedTripComponent } from './detailed-trip/detailed-trip.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -30,6 +25,9 @@ import {TabViewModule} from 'primeng/tabview';
 import { TestsChartComponent } from './tests-chart/tests-chart.component';
 import { BugsChartComponent } from './bugs-chart/bugs-chart.component';
 import { NewAndFixedChartComponent } from './new-and-fixed-chart/new-and-fixed-chart.component';
+import { TestAndBugsDataService } from './services/test-and-bugs-data.service';
+import { DropdownModule } from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -38,11 +36,7 @@ import { NewAndFixedChartComponent } from './new-and-fixed-chart/new-and-fixed-c
     AppComponent,
     ChartsComponent,
     NavbarComponent,
-    TripComponent,
     AddNewDataComponent,
-    ShoopingCartComponent,
-    ShoopingCartItemComponent,
-    DetailedTripComponent,
     SignInComponent,
     SignUpComponent,
     HomeComponent,
@@ -62,10 +56,12 @@ import { NewAndFixedChartComponent } from './new-and-fixed-chart/new-and-fixed-c
     HttpClientModule,
     HttpClientInMemoryWebApiModule,
     ChartModule,
-    TabViewModule
+    TabViewModule,
+    DropdownModule,
+    BrowserAnimationsModule
 
   ],
-  providers: [TripsService, ShoopingCartService, AuthService],
+  providers: [TestAndBugsDataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,5 @@
-<p-chart type="line" [data]="data"></p-chart>
+<div class="d-flex justify-content-center">
+  <p-dropdown id="sourceIpDropdown" [options]="chartTypes" (onChange)="detectChartTypeChange($event)"
+    placeholder="Select chart type" optionLabel="name"></p-dropdown>
+</div>
+<p-chart *ngIf="chartLoaded"  [type]="chartType.name" [data]="data"></p-chart>

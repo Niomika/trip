@@ -4,5 +4,4 @@ export interface Comment{
   trip_id: string;
   name: string;
   text: string;
-  rating: number;
 }

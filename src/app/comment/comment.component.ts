@@ -16,7 +16,6 @@ export class CommentComponent implements OnInit {
   comments: Comment[];
   @Input() trip: TestsAndBugsData;
   userService: any;
-  shoppingCart: any;
 
   isLoaded = false;
   canComment = false;
@@ -38,7 +37,7 @@ export class CommentComponent implements OnInit {
           this.auth.setUser(user);
           const comment = { mail: user.email, trip_id: this.trip.id, name: this.name, text: this.comment} as unknown as Comment;
           this.tripsService.addComment(comment);
-    this.tripsService.updateTrip(this.trip);
+    
         }
       });
       this.comment = '';
@@ -46,8 +45,6 @@ export class CommentComponent implements OnInit {
     });
   }
 
-  ratingComponentClick(clickObj: any): void { 
-  }
   checkIfCanComment() {
     this.orderService.getOrdersByUserEmail(this.auth.getUser().email).subscribe(orders => {
       console.log(orders);

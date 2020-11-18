@@ -1,1 +1,7 @@
-<p>bugs-chart works!</p>
+<div class="d-flex justify-content-center">
+  <p-dropdown id="sourceIpDropdown" [options]="chartTypes" (onChange)="detectChartTypeChange($event)"
+    placeholder="Select chart type" optionLabel="name"></p-dropdown>
+</div>
+<h3 class="d-flex justify-content-center" *ngIf="chartType.id == 4">Latest data</h3>
+<p-chart *ngIf="chartLoaded && chartType.id != 4" [type]="chartType.name" [data]="data"></p-chart>
+<p-chart *ngIf="chartLoaded && chartType.id == 4" [type]="chartType.name" [data]="dataforPie"></p-chart>

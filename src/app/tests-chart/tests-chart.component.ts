@@ -75,8 +75,8 @@ export class TestsChartComponent implements OnInit {
           label: "Manual Tests",
           data: this.datasetManualTests,
           fill: false,
-          borderColor: "red",
-          backgroundColor: "red"
+          borderColor: "skyblue",
+          backgroundColor: "skyblue"
         },
         {
           label: "Automatic Tests",
@@ -96,8 +96,8 @@ export class TestsChartComponent implements OnInit {
           label: "Passed Automatic Tests",
           data: this.datasetPasssedAutomiticTests,
           fill: false,
-          borderColor: "#4bc0c0",
-          backgroundColor: "4bc0c0"
+          borderColor: "lawngreen",
+          backgroundColor: "lawngreen"
         },
       ],
     };

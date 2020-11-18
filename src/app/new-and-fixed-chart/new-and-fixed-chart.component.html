@@ -1,1 +1,34 @@
-<p>new-and-fixed-chart works!</p>
+<div class="d-flex justify-content-center">
+  <p-dropdown
+    id="sourceIpDropdown"
+    [options]="chartTypes"
+    (onChange)="detectChartTypeChange($event)"
+    placeholder="Select chart type"
+    optionLabel="name"
+  ></p-dropdown>
+</div>
+
+<div *ngIf="chartType.name !== 'pie' && chartLoaded">
+  <p-chart [type]="chartType.name" [data]="data"></p-chart>
+</div>
+
+<div *ngIf="chartType.name == 'pie'">
+  <div class="d-flex justify-content-center" *ngIf="datesLoaded" style="padding: 2%;">
+    <p-dropdown
+      id="sourceIpDropdown"
+      [options]="this.dates"
+      (onChange)="detectDateChange($event)"
+      placeholder="Select date"
+      optionLabel="date"
+    ></p-dropdown>
+  </div>
+
+  <div class="row" *ngIf="pieChartLoaded">
+    <div class="col-6">
+      <p-chart type="pie" [data]="newBugsData"></p-chart>
+    </div>
+    <div class="col-6">
+      <p-chart type="pie" [data]="fixedBugsData"></p-chart>
+    </div>
+  </div>
+</div>

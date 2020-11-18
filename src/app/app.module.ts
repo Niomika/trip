@@ -28,6 +28,8 @@ import { NewAndFixedChartComponent } from './new-and-fixed-chart/new-and-fixed-c
 import { TestAndBugsDataService } from './services/test-and-bugs-data.service';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -58,7 +60,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChartModule,
     TabViewModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule
 
   ],
   providers: [TestAndBugsDataService, AuthService],

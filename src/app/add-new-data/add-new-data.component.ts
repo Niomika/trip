@@ -2,6 +2,7 @@ import { TripsService } from '../services/trips.service';
 import { Component, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TestsAndBugsData } from '../TestsAndBugsData'
+import { TestAndBugsDataService } from '../services/test-and-bugs-data.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { TestsAndBugsData } from '../TestsAndBugsData'
 })
 export class AddNewDataComponent {
 
-  constructor(private tripsService: TripsService){}
+  constructor(private testService: TestAndBugsDataService){}
 
   newDataForm = new FormGroup({
     date: new FormControl(''),
@@ -31,7 +32,7 @@ export class AddNewDataComponent {
   });
 
   onSubmit() {
-    this.tripsService.addNewTestsAndBugsData(this.newDataForm.value).subscribe(res => {
+    this.testService.addNewTestsAndBugsData(this.newDataForm.value).subscribe(res => {
       console.log(res);
       this.newDataForm.reset();
     });

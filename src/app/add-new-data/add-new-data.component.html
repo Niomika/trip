@@ -2,11 +2,31 @@
 <div class="card">
   <h1 class="card-header text-center ">Add new data</h1>
   <div class="card-body text-center">
-    <form [formGroup]="newDataForm" (ngSubmit)="onSubmit()">      
-      <input class="form-control" id="date" placeholder="Date" type="date" formControlName="date">
-      <input class="form-control" placeholder="Number Of Manual Tests" type="number" formControlName="manualTests">      
-      <input class="form-control" placeholder="SuccesManualTests" type="number" formControlName="succesManualTests">
-      <input class="form-control" placeholder="AutomaticTests" type="number" formControlName="automaticTests">      
+    <form [formGroup]="newDataForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="date" class="col-sm-3 col-form-label">Date</label>
+        <div class="col-sm-8">
+           <input class="form-control" id="date" placeholder="Date" type="date" formControlName="date">
+          </div>
+      </div>
+      <div class="form-group row">
+        <label for="manualTests" class="col-sm-3 col-form-label">Number of manual tests</label>
+        <div class="col-sm-8">
+          <input class="form-control" id ="manualTests" placeholder="Number of manual tests" type="number" formControlName="manualTests">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="succesManualTests" class="col-sm-3 col-form-label">Number of passed manual tests</label>
+        <div class="col-sm-8">
+          <input class="form-control" id ="succesManualTests" placeholder="Number of passed manual tests" type="number" formControlName="succesManualTests">
+        </div>
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="AutomaticTests" type="number" formControlName="automaticTests">
+      </mat-form-field>
+
       <input class="form-control" placeholder="SuccesAutomaticTests" type="number" formControlName="succesAutomaticTests">
       <input class="form-control" placeholder="BugsFromTeam" type="number" formControlName="bugsFromTeam">
       <input class="form-control" placeholder="BugsFromClients" type="number" formControlName="bugsFromClients">
@@ -19,6 +39,21 @@
       <input class="form-control" placeholder="NewFixedBugsFromClients" type="number" formControlName="newFixedBugsFromClients">
       <button class="btn  btn-outline-primary mysubmit" type="submit">Add this data</button>
     </form>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-form-field>
+    </form>
   </div>
 </div>
 </div>
+
+
+

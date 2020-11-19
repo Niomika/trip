@@ -3,53 +3,63 @@
   <h1 class="card-header text-center ">Add new data</h1>
   <div class="card-body text-center">
     <form [formGroup]="newDataForm" (ngSubmit)="onSubmit()">
-      <div class="form-group row">
-        <label for="date" class="col-sm-3 col-form-label">Date</label>
-        <div class="col-sm-8">
-           <input class="form-control" id="date" placeholder="Date" type="date" formControlName="date">
-          </div>
-      </div>
-      <div class="form-group row">
-        <label for="manualTests" class="col-sm-3 col-form-label">Number of manual tests</label>
-        <div class="col-sm-8">
-          <input class="form-control" id ="manualTests" placeholder="Number of manual tests" type="number" formControlName="manualTests">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="succesManualTests" class="col-sm-3 col-form-label">Number of passed manual tests</label>
-        <div class="col-sm-8">
-          <input class="form-control" id ="succesManualTests" placeholder="Number of passed manual tests" type="number" formControlName="succesManualTests">
-        </div>
-      </div>
-
       <mat-form-field class="example-full-width">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="AutomaticTests" type="number" formControlName="automaticTests">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" formControlName="date">
       </mat-form-field>
-
-      <input class="form-control" placeholder="SuccesAutomaticTests" type="number" formControlName="succesAutomaticTests">
-      <input class="form-control" placeholder="BugsFromTeam" type="number" formControlName="bugsFromTeam">
-      <input class="form-control" placeholder="BugsFromClients" type="number" formControlName="bugsFromClients">
-      <input class="form-control" placeholder="CriticalBugs" type="number" formControlName="criticalBugs">
-      <input class="form-control" placeholder="RegressionBugs" type="number" formControlName="regressionBugs">
-      <input class="form-control" placeholder="LegacyBugs" type="number" formControlName="legacyBugs">
-      <input class="form-control" placeholder="NewBugsFromTeam" type="number" formControlName="newBugsFromTeam">
-      <input class="form-control" placeholder="NewBugsFromClients" type="number" formControlName="newBugsFromClients">
-      <input class="form-control" placeholder="NewFixedBugsFromTeam" type="number" formControlName="newFixedBugsFromTeam">
-      <input class="form-control" placeholder="NewFixedBugsFromClients" type="number" formControlName="newFixedBugsFromClients">
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of manual tests</mat-label>
+        <input matInput type="number" formControlName="manualTests" min=0 >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of passed manual tests</mat-label>
+        <input matInput type="number" formControlName="succesManualTests" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of automatic tests</mat-label>
+        <input matInput type="number" formControlName="automaticTests" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of passed automatic tests</mat-label>
+        <input matInput type="number" formControlName="succesAutomaticTests" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of bugs reported by team</mat-label>
+        <input matInput type="number" formControlName="bugsFromTeam" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of bugs reported by clients</mat-label>
+        <input matInput type="number" formControlName="bugsFromClients" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of critical bugs</mat-label>
+        <input matInput type="number" formControlName="criticalBugs" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of regression bugs</mat-label>
+        <input matInput type="number" formControlName="regressionBugs" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of legacy bugs</mat-label>
+        <input matInput type="number" formControlName="legacyBugs" min=0>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of new bugs reported by team since last time data was collected</mat-label>
+        <input matInput type="number" formControlName="newBugsFromTeam" min="0">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of new bugs reported by clients since last time data was collected</mat-label>
+        <input matInput type="number" formControlName="newBugsFromClients" min="0">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of fixed bugs (reported by team) since last time data was collected</mat-label>
+        <input matInput type="number" formControlName="newFixedBugsFromTeam" min="0">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number of fixed bugs (reported by clients) since last time data was collected</mat-label>
+        <input matInput type="number" formControlName="newFixedBugsFromClients" min="0">
+      </mat-form-field>
       <button class="btn  btn-outline-primary mysubmit" type="submit">Add this data</button>
-    </form>
-
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Leave a comment</mat-label>
-        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-      </mat-form-field>
     </form>
   </div>
 </div>

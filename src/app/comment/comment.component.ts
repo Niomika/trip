@@ -1,8 +1,6 @@
-import { OrdersService } from './../services/orders.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { TestsAndBugsData } from '../TestsAndBugsData';
-import { TripsService } from '../services/trips.service';
 
 @Component({
   selector: 'app-comment',
@@ -20,13 +18,9 @@ export class CommentComponent implements OnInit {
   isLoaded = false;
   canComment = false;
 
-  constructor(private auth: AuthService, private tripsService: TripsService, private orderService: OrdersService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.tripsService.getComments(this.trip.id).subscribe((comments: Comment[]) => {
-      this.comments = comments;
-      this.checkIfCanComment();
-    });
   }
 
   addComment() {
@@ -36,27 +30,10 @@ export class CommentComponent implements OnInit {
         if (user.email === this.auth.getUser().email) {
           this.auth.setUser(user);
           const comment = { mail: user.email, trip_id: this.trip.id, name: this.name, text: this.comment} as unknown as Comment;
-          this.tripsService.addComment(comment);
-    
         }
       });
       this.comment = '';
       this.name = '';
-    });
-  }
-
-  checkIfCanComment() {
-    this.orderService.getOrdersByUserEmail(this.auth.getUser().email).subscribe(orders => {
-      console.log(orders);
-      console.log(this.trip.id);
-      orders.forEach(order => {
-        if (order.trip_id === this.trip.id){
-          this.canComment = true;
-          this.isLoaded = true;
-          return;
-        }
-      });
-      this.isLoaded = true;
     });
   }
 }

@@ -1,5 +1,4 @@
 import { AuthService } from './services/auth.service';
-import { TripsService } from './services/trips.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';

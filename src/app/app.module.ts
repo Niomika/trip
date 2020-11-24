@@ -18,7 +18,6 @@ import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
-import { CommentComponent } from './comment/comment.component';
 import { ChartModule } from 'primeng/chart';
 import {TabViewModule} from 'primeng/tabview';
 import { TestsChartComponent } from './tests-chart/tests-chart.component';
@@ -42,7 +41,6 @@ import { HealthFactorComponent } from './health-factor/health-factor.component';
     SignInComponent,
     SignUpComponent,
     HomeComponent,
-    CommentComponent,
     TestsChartComponent,
     BugsChartComponent,
     NewAndFixedChartComponent,

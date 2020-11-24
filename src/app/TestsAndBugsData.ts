@@ -9,7 +9,6 @@ export class TestsAndBugsData {
   bugsFromClients: number;
   criticalBugs: number;
   regressionBugs: number;
-  legacyBugs: number;
   newBugsFromTeam: number;
   newBugsFromClients: number;
   newFixedBugsFromTeam: number;

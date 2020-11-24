@@ -24,7 +24,6 @@ export class NewAndFixedChartComponent implements OnInit {
   datasetNewFixedBugsFromTeam = [];
   datasetNewFixedBugsFromClients = [];
   labels = [];
-  last: TestsAndBugsData;
   pieChartLoaded = false;
   newBugsData: any;
   fixedBugsData: any;
@@ -50,7 +49,6 @@ export class NewAndFixedChartComponent implements OnInit {
   }
 
   getData() {
-    this.datasetNewBugsFromClients = [];
     this._testAndBugsDataService.getData().subscribe((x) => {
       x = x.sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -172,21 +170,21 @@ export class NewAndFixedChartComponent implements OnInit {
     datasetFixedTeam
   ) {
     this.newBugsData = {
-      labels: ["Bugs reported by team", "Bugs reported by Clients"],
+      labels: ["Bugs reported by clients", "Bugs reported by team"],
       datasets: [
         {
           data: [datasetNewUser, datasetNewTeam],
-          backgroundColor: ["gold", "maroon"],
+          backgroundColor: ["red", "pink"],
         },
       ],
     };
 
     this.fixedBugsData = {
-      labels: ["Bugs reported by team", "Bugs reported by Clients"],
+      labels: ["Fixed bugs reported by clients", "Fixed bugs reported by team"],
       datasets: [
         {
           data: [datasetFixedUser, datasetFixedTeam],
-          backgroundColor: ["gold", "maroon"],
+          backgroundColor: ["green", "mediumspringgreen"],
         },
       ],
     };

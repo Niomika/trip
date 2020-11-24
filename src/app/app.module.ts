@@ -29,6 +29,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { HealthFactorComponent } from './health-factor/health-factor.component';
 
 
 
@@ -44,7 +45,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CommentComponent,
     TestsChartComponent,
     BugsChartComponent,
-    NewAndFixedChartComponent
+    NewAndFixedChartComponent,
+    HealthFactorComponent
   ],
   imports: [
     BrowserModule,

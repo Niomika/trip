@@ -23,7 +23,6 @@ export class AddNewDataComponent {
     bugsFromClients: new FormControl(''),
     criticalBugs: new FormControl(''),
     regressionBugs: new FormControl(''),
-    legacyBugs: new FormControl(''),
     newBugsFromTeam: new FormControl(''),
     newBugsFromClients: new FormControl(''),
     newFixedBugsFromTeam: new FormControl(''),

@@ -6,6 +6,7 @@ import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthGuard } from './auth-guard';
+import { HealthFactorComponent } from './health-factor/health-factor.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'charts', pathMatch: 'full' },
       { path: 'addnewdata', component: AddNewDataComponent },
       { path: 'charts', component: ChartsComponent },
+      { path: 'factor', component: HealthFactorComponent },
     ]
   },
 ];

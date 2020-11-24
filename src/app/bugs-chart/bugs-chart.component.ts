@@ -6,6 +6,10 @@ export interface Option {
   name: string;
   id: number;
 }
+export interface DateOption {
+  date: Date;
+  id: number;
+}
 
 @Component({
   selector: 'app-bugs-chart',
@@ -20,9 +24,10 @@ export class BugsChartComponent implements OnInit {
   datasetBugsFromClients = [];
   datasetCriticalBugs = [];
   datasetRegressionBugs = [];
-  datasetLegacyBugs = [];
   labels = [];
-  last: TestsAndBugsData;
+  pieChartLoaded = false;
+  dates: DateOption[];
+  datesLoaded = false;
 
   chartTypes: Option[] = [
     { name: "line", id: 1 },
@@ -40,7 +45,6 @@ export class BugsChartComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.getAndGenerateDoughnatData();
   }
 
   getData() {
@@ -54,7 +58,6 @@ export class BugsChartComponent implements OnInit {
         this.datasetBugsFromClients.push(test.bugsFromClients);
         this.datasetBugsFromTeam.push(test.bugsFromTeam);
         this.datasetCriticalBugs.push(test.criticalBugs);
-        this.datasetLegacyBugs.push(test.legacyBugs);
         this.datasetRegressionBugs.push(test.regressionBugs);
       });
         this.generateChartsData();
@@ -88,13 +91,6 @@ export class BugsChartComponent implements OnInit {
           backgroundColor: "red"
         },
         {
-          label: "Not fixed legacy bugs",
-          data: this.datasetLegacyBugs,
-          fill: false,
-          borderColor: "lightskyblue",
-          backgroundColor: "lightskyblue"
-        },
-        {
           label: "Not fixed regression bugs",
           data: this.datasetRegressionBugs,
           fill: false,
@@ -106,43 +102,83 @@ export class BugsChartComponent implements OnInit {
     this.chartLoaded = true;
   }
 
-  getAndGenerateDoughnatData() {
+
+  preparePieData(date: Date) {
+    let datasetOtherBugs = [];
+    let datasetCriticalBugs = [];
+    let datasetRegression = [];
+    let labels = [];
+
     this._testAndBugsDataService.getData().subscribe((x) => {
-      x = x.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      x = x.filter(
+        (x) => new Date(x.date).getTime() === new Date(date).getTime()
       );
-      this.last = x[x.length-1];
-    this.dataforPie = {
-      labels: ["Bugs reported by team", "Bugs reported by Clients", "Not fixed critical bugs", "Not fixed legacy bugs", "Not fixed regression bugs"],
-      datasets: [
-        {
-          data: [
-            this.last.bugsFromTeam,
-            this.last.bugsFromClients,
-            this.last.criticalBugs,
-            this.last.legacyBugs,
-            this.last.regressionBugs
-          ],
-          backgroundColor: [
-            "gold",
-            "maroon",
-            "red",
-            "lightskyblue",
-            "pink"
-          ]
-        }]
-      };
-      this.chartLoaded = true;
+      console.log(x);
+      x.forEach((test) => {
+        labels.push(test.date);
+        let otherBugs = test.bugsFromClients+test.bugsFromTeam-test.criticalBugs-test.regressionBugs;
+        datasetOtherBugs.push(otherBugs);
+        datasetCriticalBugs.push(test.criticalBugs);
+        datasetRegression.push(test.regressionBugs);
+      });
+      this.generatePieData(
+        datasetOtherBugs,
+        datasetCriticalBugs,
+        datasetRegression
+      );
     });
   }
 
+  async generatePieData(
+    datasetOtherBugs,
+    datasetCriticalBugs,
+    datasetRegression
+  ) {
+    this.dataforPie = {
+      labels: ["Other bugs", "Criticalbugs", "Regression bugs"],
+      datasets: [
+        {
+          data: [datasetOtherBugs,datasetCriticalBugs,datasetRegression],
+          backgroundColor: ["lightgreen", "red", "pink"],
+        },
+      ],
+    };
+    await this.delay(100);
+    this.pieChartLoaded = true;
+  }
+
+  loadDates() {
+    this._testAndBugsDataService.getData().subscribe((x) => {
+      this.dates = [];
+      x = x.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+      x.forEach((test) => {
+        this.dates.push({ id: x.indexOf(test), date: test.date });
+      });
+      console.log(this.dates);
+    });
+  }
+
+  async detectDateChange($event) {
+    this.pieChartLoaded = false;
+    this.preparePieData($event.value.date);
+  }
 
   // method needed to properly reload chart
   async detectChartTypeChange($event) {
     this.chartLoaded = false;
+    this.pieChartLoaded = false;
+    this.datesLoaded = false;
     this.chartType = $event.value;
-    await this.delay(100);
-    this.chartLoaded = true;
+    if (this.chartType.name === "pie") {
+      this.loadDates();
+      await this.delay(100);
+      this.datesLoaded = true;
+    } else {
+      await this.delay(100);
+      this.chartLoaded = true;
+    }
   }
 
   delay(ms: number) {
